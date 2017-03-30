@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Input playerOneDefault="Logitech_Simulator" playerTwoDefault="" playerThreeDefault="" playerFourDefault="">
+<Input playerOneDefault="Keyboard&amp;Mouse" playerTwoDefault="Keyboard&amp;Mouse" playerThreeDefault="Keyboard&amp;Mouse" playerFourDefault="Keyboard&amp;Mouse">
   <InputConfiguration name="Logitech_Simulator">
     <AxisConfiguration name="Accelerator">
-      <description>pédale d'accélération du véhicule</description>
+      <description>pédale d'accélération du logitech</description>
       <positive>Z</positive>
       <altPositive>None</altPositive>
-      <negative>S</negative>
+      <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
       <gravity>0</gravity>
@@ -17,10 +17,10 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Brakes">
-      <description>pédale de frein du véhicule</description>
+      <description>pédale de frein du logitech</description>
       <positive>None</positive>
       <altPositive>None</altPositive>
-      <negative>None</negative>
+      <negative>S</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
       <gravity>0</gravity>
@@ -32,7 +32,7 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Clutch">
-      <description>Pédale d'embrayage</description>
+      <description>Pédale d'embrayage du logitech</description>
       <positive>None</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
@@ -46,13 +46,13 @@
       <axis>4</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Horizontal">
-      <description>Volant</description>
+    <AxisConfiguration name="Wheel">
+      <description>Volant du logitech</description>
       <positive>D</positive>
       <altPositive>None</altPositive>
       <negative>Q</negative>
       <altNegative>None</altNegative>
-      <deadZone>0.01</deadZone>
+      <deadZone>0.05</deadZone>
       <gravity>0</gravity>
       <sensitivity>1</sensitivity>
       <snap>false</snap>
@@ -61,139 +61,319 @@
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Start_Engine">
-      <description>Bouton pour démarrer le véhicule</description>
-      <positive>Joystick1Button1</positive>
-      <altPositive>F</altPositive>
+    <AxisConfiguration name="Button0">
+      <description>Bouton 0 du gear logitech</description>
+      <positive>Joystick1Button0</positive>
+      <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
-      <invert>true</invert>
+      <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Stop_Engine">
-      <description>Arrête le véhicule</description>
+    <AxisConfiguration name="Button1">
+      <description>Bouton 1 du gear logitech</description>
+      <positive>Joystick1Button1</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button2">
+      <description>Bouton 2 du gear logitech</description>
       <positive>Joystick1Button2</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
-      <invert>true</invert>
+      <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="1er Vitesse">
-      <description>1er vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button3">
+      <description>Bouton 3 du gear logitech</description>
+      <positive>Joystick1Button3</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button4">
+      <description>Bouton 4 du volant logitech</description>
+      <positive>Joystick1Button4</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button5">
+      <description>Bouton 5 du volant logitech</description>
+      <positive>Joystick1Button5</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button6">
+      <description>Bouton 6 du volant logitech</description>
+      <positive>Joystick1Button6</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button7">
+      <description>Bouton 7 du volant logitech</description>
+      <positive>Joystick1Button7</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button8">
+      <description>Bouton 8 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button8</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="2e Vitesse">
-      <description>2e vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button9">
+      <description>Bouton 9 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button9</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="3e Vitesse">
-      <description>3e vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button10">
+      <description>Bouton 10 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button10</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="4e Vitesse">
-      <description>4e vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button11">
+      <description>Bouton 11 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button11</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="5e Vitesse">
-      <description>5e vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button12">
+      <description>Bouton 12 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button12</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="6e Vitesse">
-      <description>6e vitesse de l'embrayage</description>
+    <AxisConfiguration name="Button13">
+      <description>Bouton 13 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button13</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Marche_Arrière">
-      <description>Marche arrière de l'embrayage</description>
+    <AxisConfiguration name="Button14">
+      <description>Bouton 14 du gear logitech (levier de vitesse)</description>
       <positive>Joystick1Button14</positive>
       <altPositive>None</altPositive>
       <negative>None</negative>
       <altNegative>None</altNegative>
       <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>0</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button15">
+      <description>Bouton 15 du gear logitech</description>
+      <positive>Joystick1Button15</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button16">
+      <description>Bouton 16 du gear logitech</description>
+      <positive>Joystick1Button16</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button17">
+      <description>Bouton 17 du gear logitech</description>
+      <positive>Joystick1Button17</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button18">
+      <description>Bouton 18 du gear logitech</description>
+      <positive>Joystick1Button18</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="D_Pad_Horizontal">
+      <description>Croix directionnelle du gear logitech (Horizontal)</description>
+      <positive>None</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>AnalogAxis</type>
+      <axis>6</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="D_Pad_Vertical">
+      <description>Croix directionnelle du gear logitech (Vertical)</description>
+      <positive>None</positive>
+      <altPositive>None</altPositive>
+      <negative>None</negative>
+      <altNegative>None</altNegative>
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>AnalogAxis</type>
+      <axis>5</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
   </InputConfiguration>

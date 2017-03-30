@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using System.Runtime.InteropServices;
 
 public class ForceFeedbackExemple : MonoBehaviour {
 	ForceFeedbackInterface myForceFeedback;
 	float deadZone;
+	bool b_working = false;
 
 	void Awake()
 	{
@@ -12,31 +13,44 @@ public class ForceFeedbackExemple : MonoBehaviour {
 	}
 
 	void Start() {
-		deadZone = 0.001f;//TeamUtility.IO.InputManager.GetAxisConfiguration(0, "Horizontal").deadZone;
-		InvokeRepeating("ResetPositionVolant",1.0f,0.5f);
-		//StartCoroutine("myCoroutine");
+		deadZone = TeamUtility.IO.InputManager.GetAxisConfiguration(0, "Horizontal").deadZone;
 	}
 
-	IEnumerator myCoroutine(){
-		yield return new WaitForSeconds(0.1f);
-		ResetPositionVolant ();
-		yield return new WaitForSeconds (0.3f);
-		StartCoroutine ("myCoroutine");
-	}
-
-	void ResetPositionVolant()
-	{
-		int forceX = 0;
-		int forceY = 0;
+	void Update(){
 		float axeVolant = TeamUtility.IO.InputManager.GetAxisRaw ("Horizontal");
-		if (axeVolant > deadZone) {
-			forceX = Mathf.Clamp(Mathf.FloorToInt(10000 * axeVolant),500,10000);
+		int force = myForceFeedback.forceX;
+		if (!b_working) {
+			if (axeVolant < -(deadZone)) {
+				myForceFeedback.SetDeviceForces(-3500, 0);
+				Debug.Log("Neg");
+				b_working = true;
+			} else if (axeVolant > deadZone) {
+				myForceFeedback.SetDeviceForces(3500, 0);
+				Debug.Log("Pos");
+				b_working = true;
+			}
+			if(axeVolant > -(deadZone) && axeVolant < deadZone && force != 0){
+				if (axeVolant < -0.01) {
+					myForceFeedback.SetDeviceForces(-1000, 0);
+				}
+				if (axeVolant > 0.01) {
+					myForceFeedback.SetDeviceForces (1000, 0);
+				} else {
+					myForceFeedback.SetDeviceForces (0, 0);
+				}
+				b_working = true;
+			}
+		} else {
+			if(force >= 0 && axeVolant < (-deadZone)){
+				b_working = false;
+			}
+			if (force <= 0 && axeVolant > deadZone) {
+				b_working = false;
+			}
+			if(axeVolant > -(deadZone) && axeVolant < deadZone){
+				b_working = false;
+			}
 		}
-		if (axeVolant < -(deadZone)) {
-			forceX = -(Mathf.Clamp(Mathf.FloorToInt(10000 * Mathf.Abs(axeVolant)),500,10000));
-		}
-		Debug.Log ("Force appliquée");
-		myForceFeedback.SetDeviceForces(forceX, forceY);
 	}
 
 	void OnApplicationQuit(){

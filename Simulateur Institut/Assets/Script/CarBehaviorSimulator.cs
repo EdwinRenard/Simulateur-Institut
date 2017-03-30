@@ -3,27 +3,29 @@ using UnityEngine.UI;
 using TeamUtility.IO;
 
 public class CarBehaviorSimulator : MonoBehaviour {
-	//Variable moteur.
-	public bool start;
-	public float maxEngineRPM;
-	public float minEngineRPM;
-	public float engineRPM;
-	public AnimationCurve torqueCurve;
+	//Variables moteur.
+	public bool start;						//Bouléen pour le démarrage de la voiture.
+	public float maxEngineRPM;				//Régime maximun du moteur en Tour/min.
+	public float minEngineRPM;				//Régime minimun du moteur en Tour/min.
+	public float engineRPM;					//Régime du moteur en Tour/min.
+	public AnimationCurve torqueCurve;		//Courbe de la puissance que délivre le moteur en fonction de son régime.
 
-	public float brakeTorque;
-	public float speed;
+	public float brakeTorque;				//Puissance de freinage du véhicule.
+	public float speed;						//Vitesse du véhicule.
 	//Variables roues.
-	public WheelCollider rearLeftWheel;
-	public WheelCollider rearRightWheel;
-	public WheelCollider frontLeftWheel;
-	public WheelCollider frontRightWheel;
+	public WheelCollider rearLeftWheel;		//Roue arrière gauche du véhicule.
+	public WheelCollider rearRightWheel;	//Roue arrière droite du véhicule.
+	public WheelCollider frontLeftWheel;	//Roue avant gauche du véhicule.
+	public WheelCollider frontRightWheel;	//Roue avant droite du véhicule.
 	//Variable volant.
-	public float maxStreeringAngle;
+	public float maxStreeringAngle;			//L'angle maximal de rotation des roues (Direction)
 	//Variable boite de vitesse.
-	public AnimationCurve ratioGear;
-	public float finalDriveRatio;
-	public int currentGear;
+	public AnimationCurve ratioGear;		//Courbe du ratio en fonction de la vitesse.
+	public float finalDriveRatio;			//Ratio final du véhicule.
+	public int currentGear;					//Vitesse actuelle de la boite de vitesse.
+											//0:Reculer | 1:Neutre | 2,3,4,5,...:Vitesse
 
+	//Fonction appelé en premier. Elle sert à l'initialisation des variables.
 	void Start () {
 		start = true;
 		engineRPM = 0.0f;
@@ -35,34 +37,43 @@ public class CarBehaviorSimulator : MonoBehaviour {
 		finalDriveRatio = 3.23f;
 		currentGear = 1; //0:R | 1:N | 2,3,4,5,..:V
 
+		//Configuration des roues pour une meilleure adhérance.
 		rearLeftWheel.ConfigureVehicleSubsteps(20,48,60);
 		rearRightWheel.ConfigureVehicleSubsteps(20,48,60);
 		frontLeftWheel.ConfigureVehicleSubsteps(20,48,60);
 		frontRightWheel.ConfigureVehicleSubsteps(20,48,60);
 	}
 
+	//Fonction appelé à chaque frame.
 	void Update(){
 		speed = Mathf.Floor (this.GetComponent<Rigidbody> ().velocity.magnitude * 3.6f);
 
-		if(TeamUtility.IO.InputManager.GetButton("Start_Engine")){
-			start = true;
-		}
-		if(TeamUtility.IO.InputManager.GetButton("Stop_Engine")) {
-			start = false;
+		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name	== "Logitech_Simulator") {
+			if (TeamUtility.IO.InputManager.GetButton ("Start")) {
+				start = true;
+			}
+			if (TeamUtility.IO.InputManager.GetButton ("Stop")) {
+				start = false;
+			}
+		}else {
+			if (TeamUtility.IO.InputManager.GetButtonDown("Start")) {
+				start = !start;
+			}
 		}
 
 		ShiftGear();
 		Interface ();
 	}
 
+	//Le FixedUpdate va être appelé de manière plus régulière que le Update. Il est donc plus approprié pour gérer la physique.
 	void FixedUpdate() {
 		if (start) {
 			//Gerer la rotation du régime moteur en fonction des roues et de la vitesse choisi.
 			engineRPM = minEngineRPM + Mathf.Abs (rearLeftWheel.rpm) + Mathf.Abs (rearRightWheel.rpm) / 2 * finalDriveRatio * ratioGear.Evaluate (currentGear);
 
-			/*if (engineRPM < minEngineRPM) {
+			if (engineRPM < minEngineRPM) {
 				start = false;
-			}*/
+			}
 
 			//Déplacement de la voiture
 			float totalMotorTorque = torqueCurve.Evaluate (engineRPM) * ratioGear.Evaluate (currentGear) * Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw("Accelerator"));
@@ -72,6 +83,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 			rearLeftWheel.gameObject.transform.localRotation = Quaternion.Euler (Mathf.Abs (rearLeftWheel.rpm), 0.0f, 0.0f);
 			rearRightWheel.gameObject.transform.localRotation = Quaternion.Euler (Mathf.Abs (rearRightWheel.rpm), 0.0f, 0.0f);
 
+			//Gestion du frein.
 			if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw("Brakes")) > 0) {
 				rearLeftWheel.brakeTorque = brakeTorque * TeamUtility.IO.InputManager.GetAxisRaw("Brakes");
 				rearRightWheel.brakeTorque = brakeTorque;
@@ -92,33 +104,44 @@ public class CarBehaviorSimulator : MonoBehaviour {
 		frontRightWheel.gameObject.transform.localRotation = Quaternion.Euler (frontRightWheel.rpm, angleRotation, 0.0f);
 	}
 
+	//Fonction de gestion de la boite de vitesse
 	public void ShiftGear(){
-		if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw("Clutch")) > 0) {
-			currentGear = 1;
-			if (TeamUtility.IO.InputManager.GetButton("1er Vitesse")) {
-				currentGear = 2;
+		if (TeamUtility.IO.InputManager.GetInputConfiguration (PlayerID.One).name == "Logitech_Simulator") {
+			if (Mathf.Clamp01 (TeamUtility.IO.InputManager.GetAxisRaw ("Clutch")) > 0) {
+				currentGear = 1;
+				if (TeamUtility.IO.InputManager.GetButton ("1er Vitesse")) {
+					currentGear = 2;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("2e Vitesse")) {
+					currentGear = 3;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("3e Vitesse")) {
+					currentGear = 4;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("4e Vitesse")) {
+					currentGear = 5;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("5e Vitesse")) {
+					currentGear = 6;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("6e Vitesse")) {
+					currentGear = 6;
+				}
+				if (TeamUtility.IO.InputManager.GetButton ("Marche_Arrière")) {
+					currentGear = 0;
+				}
 			}
-			if (TeamUtility.IO.InputManager.GetButton("2e Vitesse")) {
-				currentGear = 3;
+		} else {
+			if (TeamUtility.IO.InputManager.GetButton ("GearUp")) {
+				currentGear++;
 			}
-			if (TeamUtility.IO.InputManager.GetButton("3e Vitesse")) {
-				currentGear = 4;
-			}
-			if (TeamUtility.IO.InputManager.GetButton("4e Vitesse")) {
-				currentGear = 5;
-			}
-			if (TeamUtility.IO.InputManager.GetButton("5e Vitesse")) {
-				currentGear = 6;
-			}
-			if (TeamUtility.IO.InputManager.GetButton("6e Vitesse")) {
-				currentGear = 6;
-			}
-			if (TeamUtility.IO.InputManager.GetButton("Marche_Arrière")) {
-				currentGear = 0;
+			if (TeamUtility.IO.InputManager.GetButton ("GearDown")) {
+				currentGear--;
 			}
 		}
 	}
 
+	//Simplement pour afficher quelque variable lors de la conduite.
 	public void Interface(){
 		GameObject.Find ("Start").GetComponent<Text>().text = "Start : " + start;
 		GameObject.Find ("Vitesse").GetComponent<Text>().text = "Vitesse : " + speed;
