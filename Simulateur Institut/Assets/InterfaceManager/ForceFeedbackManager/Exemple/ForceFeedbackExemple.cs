@@ -51,7 +51,7 @@ public class ForceFeedbackExemple : MonoBehaviour {
 	}
 
 	void OnApplicationQuit(){
-		myForceFeedback.shutDownForceFeedback();//4) On libère le device avec le retour de force.
+		myForceFeedback.shutDownForceFeedback();//4) On libère le périphérique avec le retour de force.
 
 	}
 }

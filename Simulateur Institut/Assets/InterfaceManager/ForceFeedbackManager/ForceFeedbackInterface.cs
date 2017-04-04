@@ -86,19 +86,18 @@ public class ForceFeedbackInterface {
 	/// </summary>
 	public void SetDeviceForces(int forceX, int forceY)
 	{
-		var temp = Time.realtimeSinceStartup;
 		this.forceX = forceX;
 		this.forceY = forceY;
-		InitialiseForceFeedback();
-		if (DetectForceFeedbackDevice () >= 0 && !forceFeedbackEnabled) {
+		int FFdetected = DetectForceFeedbackDevice();
+
+		if (FFdetected >= 0 && !forceFeedbackEnabled) {
 			InitialiseForceFeedback ();
 			forceFeedbackEnabled = true;
 		}
 
 		if (forceFeedbackEnabled)
 		{
-			int result = DetectForceFeedbackDevice();
-			if (result < 0)
+			if (FFdetected < 0)
 			{
 				//Si le device est déconnecté
 				StopEffect();
@@ -106,6 +105,7 @@ public class ForceFeedbackInterface {
 				forceFeedbackEnabled = false;
 			}
 			SetDeviceForcesXY(forceX, forceY);
+		
 		}
 	}
 }
