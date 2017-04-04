@@ -25,6 +25,13 @@ public class CarBehaviorSimulator : MonoBehaviour {
 	public int currentGear;					//Vitesse actuelle de la boite de vitesse.
 											//0:Reculer | 1:Neutre | 2,3,4,5,...:Vitesse
 
+	void Awake(){
+		
+		if (TeamUtility.IO.InputManager.GetJoystickNames ().Length > 0) {
+			TeamUtility.IO.InputManager.SetInputConfiguration ("Logitech_Simulator", PlayerID.One);
+		}
+	}
+
 	//Fonction appelé en premier. Elle sert à l'initialisation des variables.
 	void Start () {
 		start = true;
@@ -48,7 +55,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 	void Update(){
 		speed = Mathf.Floor (this.GetComponent<Rigidbody> ().velocity.magnitude * 3.6f);
 
-		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name	== "Logitech_Simulator") {
+		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator") {
 			if (TeamUtility.IO.InputManager.GetButton ("Start")) {
 				start = true;
 			}
@@ -106,36 +113,36 @@ public class CarBehaviorSimulator : MonoBehaviour {
 
 	//Fonction de gestion de la boite de vitesse
 	public void ShiftGear(){
-		if (TeamUtility.IO.InputManager.GetInputConfiguration (PlayerID.One).name == "Logitech_Simulator") {
-			if (Mathf.Clamp01 (TeamUtility.IO.InputManager.GetAxisRaw ("Clutch")) > 0) {
+		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator"){
+			if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw ("Clutch")) > 0) {
 				currentGear = 1;
-				if (TeamUtility.IO.InputManager.GetButton ("1er Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button8")) {
 					currentGear = 2;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("2e Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button9")) {
 					currentGear = 3;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("3e Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button10")) {
 					currentGear = 4;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("4e Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button11")) {
 					currentGear = 5;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("5e Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button12")) {
 					currentGear = 6;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("6e Vitesse")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button13")) {
 					currentGear = 6;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Marche_Arrière")) {
+				if (TeamUtility.IO.InputManager.GetButton ("Button14")) {
 					currentGear = 0;
 				}
 			}
 		} else {
-			if (TeamUtility.IO.InputManager.GetButton ("GearUp")) {
+			if (TeamUtility.IO.InputManager.GetButtonDown("GearUp")) {
 				currentGear++;
 			}
-			if (TeamUtility.IO.InputManager.GetButton ("GearDown")) {
+			if (TeamUtility.IO.InputManager.GetButtonDown("GearDown")) {
 				currentGear--;
 			}
 		}
