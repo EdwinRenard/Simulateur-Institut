@@ -7,23 +7,21 @@ public class ForceFeedbackInterface {
 	//Importation des différentes fonctions des DLL
 	[DllImport("user32")]
 	private static extern int GetForegroundWindow();			//Pour optenir la fenêtre windows affecté par le retour de force.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int InitDirectInput();					//Initialisation du périphérique.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int InitForceFeedback(int HWND);		//Initialise le retour de force du périphérique.
-	[DllImport("UnityForceFeedback")]
-	public static extern int SetDeviceForcesXY(int x, int y);	//Donne une force d'action.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
+	public static extern int SetDeviceForcesXY(int x, int y);	//Donne une force d'action sur l'axe X et/ou l'axe Y.
+	[DllImport("DirectInputLibrary")]
 	public static extern int StartEffect();						//Démarre l'effet initialisé.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int StopEffect();						//Arrête l'effet en cours.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int DetectForceFeedbackDevice();		//Detection de périphérique compatible avec le retour de force.
-	[DllImport("UnityForceFeedback")]
-	public static extern int SetAutoCenter(bool autocentre);	//Active/Désactive l'auto centrage du phériphérique.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int FreeForceFeedback();				//Libère le retour de force.
-	[DllImport("UnityForceFeedback")]
+	[DllImport("DirectInputLibrary")]
 	public static extern int FreeDirectInput();					//Libère le périphérique.
 
 	//Variables
@@ -37,7 +35,7 @@ public class ForceFeedbackInterface {
 	/// </summary>
 	public ForceFeedbackInterface()
 	{
-		InitDirectInput();
+		InitialiseForceFeedback ();
 	}
 		
 	/// <summary>
@@ -51,14 +49,12 @@ public class ForceFeedbackInterface {
 			return;
 		}
 
+		//On récupère l'ID de la fenêtre windows qui requis le retour de force.
 		int hwnd = GetForegroundWindow();
-		Debug.Log("Window HWdD = "+hwnd);
-
-		if(InitForceFeedback(hwnd) >= 0)
-		{
+		//Appel à la fonction de la DLL pour initialiser le retour de force.
+		if(InitForceFeedback(hwnd) >= 0){
 			StartEffect();
 			forceFeedbackEnabled = true;
-			SetAutoCenter(false);
 		}
 	}
 
@@ -81,21 +77,21 @@ public class ForceFeedbackInterface {
 		if(forceFeedbackEnabled)
 		{
 			StopEffect();
-			FreeDirectInput();
 		}
+		FreeDirectInput();
 	}
 
 	/// <summary>
-	/// fonction pour donner une certaine force sur les axes X et Y.
+	/// Fonction pour donner une certaine force sur les axes X et Y.
 	/// </summary>
 	public void SetDeviceForces(int forceX, int forceY)
 	{
+		var temp = Time.realtimeSinceStartup;
 		this.forceX = forceX;
 		this.forceY = forceY;
-
-		if (DetectForceFeedbackDevice() >= 0 && !forceFeedbackEnabled)
-		{
-			InitialiseForceFeedback();
+		InitialiseForceFeedback();
+		if (DetectForceFeedbackDevice () >= 0 && !forceFeedbackEnabled) {
+			InitialiseForceFeedback ();
 			forceFeedbackEnabled = true;
 		}
 
@@ -105,7 +101,6 @@ public class ForceFeedbackInterface {
 			if (result < 0)
 			{
 				//Si le device est déconnecté
-				Debug.LogWarning("ForceFeedback device disconnected");
 				StopEffect();
 				FreeForceFeedback();
 				forceFeedbackEnabled = false;
