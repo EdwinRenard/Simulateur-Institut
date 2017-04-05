@@ -24,7 +24,7 @@ public class ForceFeedbackExemple : MonoBehaviour {
 
 	void Update(){//3) Application de l'effet. Ici l'effet doit être appliquée en continue, c'est pour cela qu'il se trouve dans l'Update.
 		float axeVolant = TeamUtility.IO.InputManager.GetAxisRaw ("Horizontal");
-		int force = myForceFeedback.forceX;
+		/*int force = myForceFeedback.forceX;
 		if (!b_etatChange) { //Si on n'attend pas un changement d'état. Ce qui signifie que le volant est passer de la position neutre à la position gauche par exemple, donc on applique une force opposée.
 			if (axeVolant < -(deadZone)) { //Si on est dans l'état où le volant est à gauche.
 				myForceFeedback.SetDeviceForces(-3000, 0); //On lui dit d'aller à droite.
@@ -47,11 +47,14 @@ public class ForceFeedbackExemple : MonoBehaviour {
 			if(axeVolant > -(deadZone) && axeVolant < deadZone){//Le volant à bouger au centre.
 				b_etatChange = false;
 			}
-		}
+		}*/
+
+		int force = Mathf.FloorToInt(10000 * axeVolant);
+		myForceFeedback.SetDeviceForces (force, 0);
 	}
 
 	void OnApplicationQuit(){
-		myForceFeedback.shutDownForceFeedback();//4) On libère le device avec le retour de force.
+		myForceFeedback.shutDownForceFeedback();//4) On libère le périphérique avec le retour de force.
 
 	}
 }
