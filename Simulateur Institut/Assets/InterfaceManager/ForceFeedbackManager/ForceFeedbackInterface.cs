@@ -86,6 +86,7 @@ public class ForceFeedbackInterface {
 	/// </summary>
 	public void SetDeviceForces(int forceX, int forceY)
 	{
+		var temp = Time.realtimeSinceStartup;
 		this.forceX = forceX;
 		this.forceY = forceY;
 		int FFdetected = DetectForceFeedbackDevice();
@@ -107,5 +108,6 @@ public class ForceFeedbackInterface {
 			SetDeviceForcesXY(forceX, forceY);
 		
 		}
+		Debug.Log ("Temp : "+(Time.realtimeSinceStartup - temp).ToString());
 	}
 }
