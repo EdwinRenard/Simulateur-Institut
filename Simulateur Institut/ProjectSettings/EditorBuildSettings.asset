@@ -11,5 +11,5 @@ EditorBuildSettings:
     path: Assets/circuit.unity
   - enabled: 0
     path: Assets/InterfaceLogitech.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/circuit.unity
