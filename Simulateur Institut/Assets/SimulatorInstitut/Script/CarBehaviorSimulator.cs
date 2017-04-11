@@ -23,15 +23,17 @@ public class CarBehaviorSimulator : MonoBehaviour {
 	public AnimationCurve ratioGear;		//Ratio curve as a function of speed.
 	public float finalDriveRatio;			//Final vehicle ratio.
 	public int currentGear;					//Current speed of the gearbox.
-
-	void Awake(){
-		
-		if (TeamUtility.IO.InputManager.GetJoystickNames ().Length > 0) {
-			TeamUtility.IO.InputManager.SetInputConfiguration ("Logitech_Simulator", PlayerID.One);
-		}
-	}
 		
 	void Start () {
+		if (TeamUtility.IO.InputManager.GetJoystickNames().Length > 0) {
+			TeamUtility.IO.InputManager.SetInputConfiguration ("Logitech_Simulator", PlayerID.One);
+			for (int i = 0; i < TeamUtility.IO.InputManager.GetJoystickNames ().Length; i++) {
+				Debug.Log ("Joystick : +" + TeamUtility.IO.InputManager.GetJoystickNames()[i]);
+			}
+		} else {
+			TeamUtility.IO.InputManager.SetInputConfiguration("Keyboard&Mouse", PlayerID.One);
+		}
+			
 		start = true;
 		engineRPM = 0.0f;
 		maxEngineRPM = 5500.0f;
@@ -47,6 +49,8 @@ public class CarBehaviorSimulator : MonoBehaviour {
 		rearRightWheel.ConfigureVehicleSubsteps(20,48,60);
 		frontLeftWheel.ConfigureVehicleSubsteps(20,48,60);
 		frontRightWheel.ConfigureVehicleSubsteps(20,48,60);
+
+		Debug.Log("InputConfiguration : "+ TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name);
 	}
 		
 	void Update(){
@@ -70,8 +74,8 @@ public class CarBehaviorSimulator : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (start) {
-			//Management of the rotation of the engine speed according to the wheels and the chosen speed.
-			engineRPM = minEngineRPM + Mathf.Abs (rearLeftWheel.rpm) + Mathf.Abs (rearRightWheel.rpm) / 2 * finalDriveRatio * ratioGear.Evaluate (currentGear);
+			//Management of the rotation of the engine speed according to the wheels and the chosen speed.						//Else negative value in reverse.
+			engineRPM = minEngineRPM + Mathf.Abs (rearLeftWheel.rpm) + Mathf.Abs (rearRightWheel.rpm) / 2 * finalDriveRatio * Mathf.Abs(ratioGear.Evaluate (currentGear));
 
 			if (engineRPM < minEngineRPM) {
 				start = false;
