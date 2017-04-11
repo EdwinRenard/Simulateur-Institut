@@ -5,11 +5,5 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Vehicle Physics Toolkit v1.4/Scenes/DemoPC.unity
-  - enabled: 0
-    path: Assets/circuit.unity
-  - enabled: 0
-    path: Assets/InterfaceLogitech.unity
-  - enabled: 0
-    path: Assets/Scene/circuit.unity
+  - enabled: 1
+    path: Assets/SimulatorInstitut/Scene/circuit.unity

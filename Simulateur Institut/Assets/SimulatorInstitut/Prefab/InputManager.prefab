@@ -404,7 +404,7 @@ MonoBehaviour:
       type: 3
       axis: 5
       joystick: 0
-    isExpanded: 1
+    isExpanded: 0
   - name: Keyboard&Mouse
     axes:
     - name: Horizontal
@@ -534,9 +534,9 @@ MonoBehaviour:
       axis: 0
       joystick: 0
     isExpanded: 0
-  playerOneDefault: Keyboard&Mouse
+  playerOneDefault: 
   playerTwoDefault: 
   playerThreeDefault: 
   playerFourDefault: 
-  dontDestroyOnLoad: 0
-  ignoreTimescale: 1
+  dontDestroyOnLoad: 1
+  ignoreTimescale: 0
