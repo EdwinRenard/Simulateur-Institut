@@ -1,0 +1,163 @@
+fileFormatVersion: 2
+guid: 53bd1780e561c6d4e8c15b56d6550cfa
+timeCreated: 1491958911
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back_Suspension_L
+    100002: Back_Suspension_R
+    100004: Back_Wheel_Force_1_L
+    100006: Back_Wheel_Force_1_R
+    100008: Back_Wheel_Mesh_1_L
+    100010: Back_Wheel_Mesh_1_R
+    100012: Camera
+    100014: Car_Con_Box
+    100016: Car_Glas_Mesh
+    100018: Car_Mesh
+    100020: //RootNode
+    100022: Empty
+    100024: Front_Steering_Mesh_1_L
+    100026: Front_Steering_Mesh_2_R
+    100028: Front_Wheel_Force_1_L
+    100030: Front_Wheel_Force_1_R
+    100032: Front_Wheel_Mesh_1_R
+    100034: Front_Wheel_Mesh_2_L
+    100036: Hemi
+    100038: Plane
+    400000: Back_Suspension_L
+    400002: Back_Suspension_R
+    400004: Back_Wheel_Force_1_L
+    400006: Back_Wheel_Force_1_R
+    400008: Back_Wheel_Mesh_1_L
+    400010: Back_Wheel_Mesh_1_R
+    400012: Camera
+    400014: Car_Con_Box
+    400016: Car_Glas_Mesh
+    400018: Car_Mesh
+    400020: //RootNode
+    400022: Empty
+    400024: Front_Steering_Mesh_1_L
+    400026: Front_Steering_Mesh_2_R
+    400028: Front_Wheel_Force_1_L
+    400030: Front_Wheel_Force_1_R
+    400032: Front_Wheel_Mesh_1_R
+    400034: Front_Wheel_Mesh_2_L
+    400036: Hemi
+    400038: Plane
+    2300000: Back_Suspension_L
+    2300002: Back_Suspension_R
+    2300004: Back_Wheel_Force_1_L
+    2300006: Back_Wheel_Force_1_R
+    2300008: Back_Wheel_Mesh_1_L
+    2300010: Back_Wheel_Mesh_1_R
+    2300012: Car_Con_Box
+    2300014: Car_Glas_Mesh
+    2300016: Car_Mesh
+    2300018: Front_Steering_Mesh_1_L
+    2300020: Front_Steering_Mesh_2_R
+    2300022: Front_Wheel_Force_1_L
+    2300024: Front_Wheel_Force_1_R
+    2300026: Front_Wheel_Mesh_1_R
+    2300028: Front_Wheel_Mesh_2_L
+    2300030: Plane
+    3300000: Back_Suspension_L
+    3300002: Back_Suspension_R
+    3300004: Back_Wheel_Force_1_L
+    3300006: Back_Wheel_Force_1_R
+    3300008: Back_Wheel_Mesh_1_L
+    3300010: Back_Wheel_Mesh_1_R
+    3300012: Car_Con_Box
+    3300014: Car_Glas_Mesh
+    3300016: Car_Mesh
+    3300018: Front_Steering_Mesh_1_L
+    3300020: Front_Steering_Mesh_2_R
+    3300022: Front_Wheel_Force_1_L
+    3300024: Front_Wheel_Force_1_R
+    3300026: Front_Wheel_Mesh_1_R
+    3300028: Front_Wheel_Mesh_2_L
+    3300030: Plane
+    4300000: Plane
+    4300002: Car_Con_Box
+    4300004: Back_Suspension_L
+    4300006: Back_Wheel_Force_1_L
+    4300008: Back_Wheel_Mesh_1_L
+    4300010: Back_Suspension_R
+    4300012: Back_Wheel_Force_1_R
+    4300014: Back_Wheel_Mesh_1_R
+    4300016: Car_Glas_Mesh
+    4300018: Car_Mesh
+    4300020: Front_Steering_Mesh_1_L
+    4300022: Front_Wheel_Force_1_L
+    4300024: Front_Wheel_Mesh_2_L
+    4300026: Front_Wheel_Mesh_1_R
+    4300028: Front_Wheel_Force_1_R
+    4300030: Front_Steering_Mesh_2_R
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
