@@ -109,6 +109,7 @@ namespace TeamUtility.IO
 
                 SetRawAxisNames();
 				Initialize();
+				Load();
 			}
 		}
 		
@@ -1234,18 +1235,20 @@ namespace TeamUtility.IO
 		}
 
         /// <summary>
-		/// Loads the input configurations saved in the XML format, from Application.persistentDataPath.
+		/// Loads the input configurations saved in the XML format, from Application.streamingAssetsPath.
 		/// </summary>
 		public static void Load()
 		{
 #if UNITY_WINRT && !UNITY_EDITOR
-			string filename = Application.persistentDataPath + "/input_config.xml";
+			//string filename = Application.persistentDataPath + "/input_config.xml";
+			string filename = System.IO.Path.Combine(Application.streamingAssetsPath, "input_config.xml");
 			if(UnityEngine.Windows.File.Exists(filename))
 			{
 				Load(new InputLoaderXML(filename));
 			}
 #else
-			string filename = System.IO.Path.Combine(Application.persistentDataPath, "input_config.xml");
+			//string filename = System.IO.Path.Combine(Application.persistentDataPath, "input_config.xml");
+			string filename = System.IO.Path.Combine(Application.streamingAssetsPath, "input_config.xml");
 			if(System.IO.File.Exists(filename))
 			{
 				Load(new InputLoaderXML(filename));
