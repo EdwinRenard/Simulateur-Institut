@@ -20,13 +20,14 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace TeamUtility.IO
+namespace SimulatorInstitut
 {
 	/// <summary>
 	/// Encapsulates a method that takes one parameter(the key) and returns 'true' if
@@ -87,6 +88,8 @@ namespace TeamUtility.IO
 		private Dictionary<string, InputConfiguration> _configurationTable;
 		private Dictionary<string, Dictionary<string, AxisConfiguration>> _axesTable;
 
+		private static CustomJoystick joystickDevicePlayerOne;
+
 		#endregion
 		
 		private void Awake()
@@ -118,16 +121,13 @@ namespace TeamUtility.IO
 			_rawMouseAxes = new string[AxisConfiguration.MaxMouseAxes];
 			for(int i = 0; i < _rawMouseAxes.Length; i++)
 			{
-				_rawMouseAxes[i] = string.Concat("mouse_axis_", i);
+				_rawMouseAxes[i] = string.Concat("Axis_", i);
 			}
 			
-			_rawJoystickAxes = new string[AxisConfiguration.MaxJoysticks * AxisConfiguration.MaxJoystickAxes];
-			for(int i = 0; i < AxisConfiguration.MaxJoysticks; i++)
+			_rawJoystickAxes = new string[AxisConfiguration.MaxJoystickAxes];
+			for(int j = 0; j < AxisConfiguration.MaxJoystickAxes; j++)
 			{
-				for(int j = 0; j < AxisConfiguration.MaxJoystickAxes; j++)
-				{
-					_rawJoystickAxes[i * AxisConfiguration.MaxJoystickAxes + j] = string.Concat("joy_", i, "_axis_", j);
-				}
+				_rawJoystickAxes[j] = string.Concat("Axis_", j+1);
 			}
 		}
 		
@@ -146,6 +146,16 @@ namespace TeamUtility.IO
             if (!string.IsNullOrEmpty(playerOneDefault) && _configurationTable.ContainsKey(playerOneDefault))
             {
                 _playerOneConfig = _configurationTable[playerOneDefault];
+
+				if(string.Equals(_playerOneConfig.name, "Logitech_Simulator")){
+					joystickDevicePlayerOne = new LogitechJoystick ();
+				}
+				else if(string.Equals(_playerOneConfig.name,"DynamiquePlatform_Simulator")){
+					joystickDevicePlayerOne = new DynamiquePlatformJoystick();
+				}
+				else{
+					joystickDevicePlayerOne = new KeyboardJoystick();
+				}
             }
             else
             {
@@ -248,7 +258,7 @@ namespace TeamUtility.IO
 		private void ScanInput()
 		{
 			float timeout = ignoreTimescale ? (Time.realtimeSinceStartup - _scanStartTime) : (Time.time - _scanStartTime);
-			if(!string.IsNullOrEmpty(_cancelScanButton) && GetButtonDown(_cancelScanButton) || timeout >= _scanTimeout)
+			if(!string.IsNullOrEmpty(_cancelScanButton) && GetButton(_cancelScanButton) || timeout >= _scanTimeout)
 			{
 				StopInputScan();
 				return;
@@ -534,59 +544,6 @@ namespace TeamUtility.IO
 		public static bool IgnoreTimescale { get { return _instance.ignoreTimescale; } }
 		
 		/// <summary>
-		/// Returns true if any axis of any active input configuration is receiving input.
-		/// </summary>
-		public static bool AnyInput()
-		{
-            return AnyInput(_instance._playerOneConfig) || AnyInput(_instance._playerTwoConfig) ||
-                    AnyInput(_instance._playerThreeConfig) || AnyInput(_instance._playerFourConfig);
-		}
-
-        /// <summary>
-		/// Returns true if any axis of the input configuration is receiving input.
-		/// </summary>
-        public static bool AnyInput(PlayerID playerID)
-        {
-            return AnyInput(_instance.GetInputConfigurationByPlayerID(playerID));
-        }
-		
-		/// <summary>
-		/// Returns true if any axis of the specified input configuration is receiving input.
-		/// If the specified input configuration is not active and the axis is of type
-		/// DigialAxis, RemoteAxis, RemoteButton or AnalogButton this method will return false.
-		/// </summary>
-		public static bool AnyInput(string inputConfigName)
-		{
-			InputConfiguration inputConfig;
-			if(_instance._configurationTable.TryGetValue(inputConfigName, out inputConfig))
-			{
-				int count = inputConfig.axes.Count;
-				for(int i = 0; i < count; i++)
-				{
-					if(inputConfig.axes[i].AnyInput)
-						return true;
-				}
-			}
-			
-			return false;
-		}
-
-        private static bool AnyInput(InputConfiguration inputConfig)
-        {
-            if (inputConfig != null)
-            {
-                int count = inputConfig.axes.Count;
-                for (int i = 0; i < count; i++)
-                {
-                    if (inputConfig.axes[i].AnyInput)
-                        return true;
-                }
-            }
-
-            return false;
-        }
-		
-		/// <summary>
 		/// If an axis with the requested name exists, and it is of type 'RemoteAxis', the axis' value will be changed.
 		/// </summary>
 		[Obsolete("Use the method overload that takes in the input configuration name", true)]
@@ -605,27 +562,6 @@ namespace TeamUtility.IO
 				axisConfig.SetRemoteAxisValue(value);
 			else
 				Debug.LogError(string.Format("An axis named \'{0}\' does not exist in the input configuration named \'{1}\'", axisName, inputConfigName));
-		}
-
-        /// <summary>
-        /// If an button with the requested name exists, and it is of type 'RemoteButton', the button's state will be changed.
-        /// </summary>
-		[Obsolete("Use the method overload that takes in the input configuration name", true)]
-        public static void SetRemoteButtonValue(string buttonName, bool down, bool justChanged)
-		{
-			SetRemoteButtonValue(_instance._playerOneConfig.name, buttonName, down, justChanged);
-		}
-		
-		/// <summary>
-		/// If an button with the requested name exists, and it is of type 'RemoteButton', the button's state will be changed.
-		/// </summary>
-		public static void SetRemoteButtonValue(string inputConfigName, string buttonName, bool down, bool justChanged)
-		{
-			AxisConfiguration axisConfig = GetAxisConfiguration(inputConfigName, buttonName);
-			if(axisConfig != null)
-				axisConfig.SetRemoteButtonValue(down, justChanged);
-			else
-				Debug.LogError(string.Format("A remote button named \'{0}\' does not exist in the input configuration named \'{1}\'", buttonName, inputConfigName));
 		}
 		
 		/// <summary>
@@ -772,12 +708,12 @@ namespace TeamUtility.IO
             return true;
 		}
 		
-		public static AxisConfiguration CreateButton(string inputConfigName, string buttonName, KeyCode primaryKey)
+		public static AxisConfiguration CreateButton(string inputConfigName, string buttonName, string primaryKey)
 		{
-			return CreateButton(inputConfigName, buttonName, primaryKey, KeyCode.None);
+			return CreateButton(inputConfigName, buttonName, primaryKey, string.Empty);
 		}
 		
-		public static AxisConfiguration CreateButton(string inputConfigName, string buttonName, KeyCode primaryKey, KeyCode secondaryKey)
+		public static AxisConfiguration CreateButton(string inputConfigName, string buttonName, string primaryKey, string secondaryKey)
 		{
 			InputConfiguration inputConfig = GetInputConfiguration(inputConfigName);
 			if(inputConfig == null)
@@ -804,13 +740,12 @@ namespace TeamUtility.IO
 			return axisConfig;
 		}
 		
-		public static AxisConfiguration CreateDigitalAxis(string inputConfigName, string axisName, KeyCode positive, KeyCode negative, float gravity, float sensitivity)
+		public static AxisConfiguration CreateDigitalAxis(string inputConfigName, string axisName, string positive, string negative, float gravity, float sensitivity)
 		{
-			return CreateDigitalAxis(inputConfigName, axisName, positive, negative, KeyCode.None, KeyCode.None, gravity, sensitivity);
+			return CreateDigitalAxis(inputConfigName, axisName, positive, negative, string.Empty, string.Empty, gravity, sensitivity);
 		}
 		
-		public static AxisConfiguration CreateDigitalAxis(string inputConfigName, string axisName, KeyCode positive, KeyCode negative,
-		                                                  KeyCode altPositive, KeyCode altNegative, float gravity, float sensitivity)
+		public static AxisConfiguration CreateDigitalAxis(string inputConfigName, string axisName, string positive, string negative, string altPositive, string altNegative, float gravity, float sensitivity)
 		{
 			InputConfiguration inputConfig = GetInputConfiguration(inputConfigName);
 			if(inputConfig == null)
@@ -928,10 +863,10 @@ namespace TeamUtility.IO
 			
 			AxisConfiguration axisConfig = new AxisConfiguration(axisName);
 			axisConfig.type = InputType.RemoteAxis;
-			axisConfig.positive = KeyCode.None;
-			axisConfig.negative = KeyCode.None;
-			axisConfig.altPositive = KeyCode.None;
-			axisConfig.altNegative = KeyCode.None;
+			axisConfig.positive = string.Empty;
+			axisConfig.negative = string.Empty;
+			axisConfig.altPositive = string.Empty;
+			axisConfig.altNegative = string.Empty;
 			axisConfig.Initialize();
 			inputConfig.axes.Add(axisConfig);
 			
@@ -957,10 +892,10 @@ namespace TeamUtility.IO
 			
 			AxisConfiguration axisConfig = new AxisConfiguration(buttonName);
 			axisConfig.type = InputType.RemoteButton;
-			axisConfig.positive = KeyCode.None;
-			axisConfig.negative = KeyCode.None;
-			axisConfig.altPositive = KeyCode.None;
-			axisConfig.altNegative = KeyCode.None;
+			axisConfig.positive = string.Empty;
+			axisConfig.negative = string.Empty;
+			axisConfig.altPositive = string.Empty;
+			axisConfig.altNegative = string.Empty;
 			axisConfig.Initialize();
 			inputConfig.axes.Add(axisConfig);
 			
@@ -998,10 +933,10 @@ namespace TeamUtility.IO
 			axisConfig.type = InputType.AnalogButton;
 			axisConfig.joystick = joystick;
 			axisConfig.axis = axis;
-			axisConfig.positive = KeyCode.None;
-			axisConfig.negative = KeyCode.None;
-			axisConfig.altPositive = KeyCode.None;
-			axisConfig.altNegative = KeyCode.None;
+			axisConfig.positive = string.Empty;
+			axisConfig.negative = string.Empty;
+			axisConfig.altPositive = string.Empty;
+			axisConfig.altNegative = string.Empty;
 			axisConfig.Initialize();
 			inputConfig.axes.Add(axisConfig);
 			
@@ -1205,11 +1140,11 @@ namespace TeamUtility.IO
 		/// </summary>
 		public static void Save()
 		{
-#if UNITY_WINRT && !UNITY_EDITOR
+			#if UNITY_WINRT && !UNITY_EDITOR
 			string filename = Application.persistentDataPath + "/input_config.xml";
-#else
+			#else
 			string filename = System.IO.Path.Combine(Application.persistentDataPath, "input_config.xml");
-#endif
+			#endif
 			Save(new InputSaverXML(filename));
 		}
 		
@@ -1239,21 +1174,19 @@ namespace TeamUtility.IO
 		/// </summary>
 		public static void Load()
 		{
-#if UNITY_WINRT && !UNITY_EDITOR
-			//string filename = Application.persistentDataPath + "/input_config.xml";
+			#if UNITY_WINRT && !UNITY_EDITOR
 			string filename = System.IO.Path.Combine(Application.streamingAssetsPath, "input_config.xml");
 			if(UnityEngine.Windows.File.Exists(filename))
 			{
 				Load(new InputLoaderXML(filename));
 			}
-#else
-			//string filename = System.IO.Path.Combine(Application.persistentDataPath, "input_config.xml");
+			#else
 			string filename = System.IO.Path.Combine(Application.streamingAssetsPath, "input_config.xml");
 			if(System.IO.File.Exists(filename))
 			{
 				Load(new InputLoaderXML(filename));
 			}
-#endif
+			#endif
 		}
 		
 		/// <summary>
