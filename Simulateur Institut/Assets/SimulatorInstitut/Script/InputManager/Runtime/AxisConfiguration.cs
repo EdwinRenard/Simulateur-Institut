@@ -20,10 +20,11 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using System;
 
-namespace TeamUtility.IO
+namespace SimulatorInstitut
 {
 	[Serializable]
 	public sealed class AxisConfiguration
@@ -32,9 +33,9 @@ namespace TeamUtility.IO
 		public const float Neutral = 0.0f;
 		public const float Positive = 1.0f;
 		public const float Negative = -1.0f;
-		public const int MaxMouseAxes = 3;
-		public const int MaxJoystickAxes = 28;
-		public const int MaxJoysticks = 11;
+		public const int MaxMouseAxes = 2;
+		public const int MaxJoystickAxes = 6;
+		public const int MaxJoysticks = 4;
 		#endregion
 		
 		#region [Settings]
@@ -43,10 +44,10 @@ namespace TeamUtility.IO
 		/// </summary>
 		public string name;
 		public string description;
-		public KeyCode positive;
-		public KeyCode negative;
-		public KeyCode altPositive;
-		public KeyCode altNegative;
+		public string positive;
+		public string negative;
+		public string altPositive;
+		public string altNegative;
 		public float deadZone;
 		/// <summary
 		/// The speed(in units/sec) at which a digital axis falls towards neutral.
@@ -78,53 +79,7 @@ namespace TeamUtility.IO
 		private int _lastJoystick;
 		private InputType _lastType;
 		private float _lastUpdateTime;
-		private float _deltaTime;
-		private ButtonState _remoteButtonState;
-		private ButtonState _analogButtonState;
-		
-		public bool AnyInput
-		{
-			get
-			{
-				if(type == InputType.Button)
-					return (Input.GetKey(positive) || Input.GetKey(altPositive));
-				else if(type == InputType.RemoteButton)
-					return _remoteButtonState == ButtonState.Pressed || _remoteButtonState == ButtonState.JustPressed;
-				else if(type == InputType.AnalogButton)
-					return _analogButtonState == ButtonState.Pressed || _analogButtonState == ButtonState.JustPressed;
-				else if(type == InputType.DigitalAxis || type == InputType.RemoteAxis)
-					return Mathf.Abs(_value) >= 1.0f;
-				else
-					return Mathf.Abs(Input.GetAxisRaw(_rawAxisName)) >= 1.0f;
-			}
-		}
-
-		public bool AnyKey
-		{
-			get
-			{
-				return Input.GetKey(positive) || Input.GetKey(altPositive) || 
-						Input.GetKey(negative) || Input.GetKey(altNegative);
-			}
-		}
-
-		public bool AnyKeyDown
-		{
-			get
-			{
-				return Input.GetKeyDown(positive) || Input.GetKeyDown(altPositive) || 
-						Input.GetKeyDown(negative) || Input.GetKeyDown(altNegative);
-			}
-		}
-
-		public bool AnyKeyUp
-		{
-			get
-			{
-				return Input.GetKeyUp(positive) || Input.GetKeyUp(altPositive) || 
-						Input.GetKeyUp(negative) || Input.GetKeyUp(altNegative);
-			}
-		}
+		private float _deltaTime;	
 		
 		public AxisConfiguration() :
 			this("New Axis") { }
@@ -132,11 +87,11 @@ namespace TeamUtility.IO
 		public AxisConfiguration(string name)
 		{
 			this.name = name;
-			description = string.Empty;
-			positive = KeyCode.None;
-			altPositive = KeyCode.None;
-			negative = KeyCode.None;
-			altNegative = KeyCode.None;
+			description = string.Empty; 
+			positive = string.Empty;
+			altPositive = string.Empty;
+			negative = string.Empty;
+			altNegative = string.Empty;
 			type = InputType.Button;
 			gravity = 1.0f;
 			sensitivity = 1.0f;
@@ -147,8 +102,7 @@ namespace TeamUtility.IO
 			UpdateRawAxisName();
 			_value = Neutral;
 			_lastUpdateTime = Time.realtimeSinceStartup;
-			_remoteButtonState = ButtonState.Released;
-			_analogButtonState = ButtonState.Released;
+			Input.ResetInputAxes();
 		}
 		
 		public void Update()
@@ -166,86 +120,9 @@ namespace TeamUtility.IO
 				_lastAxis = axis;
 				_lastJoystick = joystick;
 			}
-
-			bool positiveAndNegativeDown = (Input.GetKey(positive) || Input.GetKey(altPositive)) &&
-											(Input.GetKey(negative) || Input.GetKey(altNegative));
-			if(type == InputType.DigitalAxis && !positiveAndNegativeDown)
-			{
-				UpdateDigitalAxisValue();
-			}
-			if(type == InputType.AnalogButton)
-			{
-				UpdateAnalogButtonValue();
-			}
 		}
 
-		private void UpdateDigitalAxisValue()
-		{
-			if(Input.GetKey(positive) || Input.GetKey(altPositive))
-			{
-				if(_value < Neutral && snap) {
-					_value = Neutral;
-				}
-
-				_value += sensitivity * _deltaTime;
-				if(_value > Positive)
-				{
-					_value = Positive;
-				}
-			}
-			else if(Input.GetKey(negative) || Input.GetKey(altNegative))
-			{
-				if(_value > Neutral && snap) {
-					_value = Neutral;
-				}
-				
-				_value -= sensitivity * _deltaTime;
-				if(_value < Negative)
-				{
-					_value = Negative;
-				}
-			}
-			else
-			{
-				if(_value < Neutral)
-				{
-					_value += gravity * _deltaTime;
-					if(_value > Neutral)
-					{
-						_value = Neutral;
-					}
-				}
-				else if( _value > Neutral)
-				{
-					_value -= gravity * _deltaTime;
-					if(_value < Neutral)
-					{
-						_value = Neutral;
-					}
-				}
-			}
-		}
-		
-		private void UpdateAnalogButtonValue()
-		{
-			float axis = Input.GetAxisRaw(_rawAxisName) * (invert ? -1 : 1);
-			if(axis >= 1.0f)
-			{
-				if(_analogButtonState == ButtonState.Released || _analogButtonState == ButtonState.JustReleased)
-					_analogButtonState = ButtonState.JustPressed;
-				else if(_analogButtonState == ButtonState.JustPressed)
-					_analogButtonState = ButtonState.Pressed;
-			}
-			else
-			{
-				if(_analogButtonState == ButtonState.Pressed || _analogButtonState == ButtonState.JustPressed)
-					_analogButtonState = ButtonState.JustReleased;
-				else if(_analogButtonState == ButtonState.JustReleased)
-					_analogButtonState = ButtonState.Released;
-			}
-		}
-		
-		public float GetAxis()
+		public float GetAxis(CustomJoystick joystickDevice)
 		{
 			float axis = Neutral;
 			if(type == InputType.DigitalAxis || type == InputType.RemoteAxis)
@@ -256,14 +133,14 @@ namespace TeamUtility.IO
 			{
 				if(_rawAxisName != null)
 				{
-					axis = Input.GetAxis(_rawAxisName) * sensitivity;
+					axis = (float) joystickDevice.getJoystickActionState(_rawAxisName) * sensitivity;
 				}
 			}
 			else if(type == InputType.AnalogAxis)
 			{
 				if(_rawAxisName != null)
 				{
-					axis = Input.GetAxis(_rawAxisName);
+					axis = (float) joystickDevice.getJoystickActionState(_rawAxisName);
 					if(Mathf.Abs(axis) < deadZone)
 					{
 						axis = Neutral;
@@ -272,65 +149,37 @@ namespace TeamUtility.IO
 					axis = Mathf.Clamp(axis * sensitivity, -1, 1);
 				}
 			}
-			
+
 			return invert ? -axis : axis;
 		}
 
 		///<summary>
 		///	Returns raw input with no sensitivity or smoothing applyed.
 		/// </summary>
-		public float GetAxisRaw()
+		public float GetAxisRaw(CustomJoystick joystickDevice)
 		{
 			float axis = Neutral;
 			if(type == InputType.DigitalAxis)
 			{
-				if(Input.GetKey(positive) || Input.GetKey(altPositive))
+				if(joystickDevice.getJoystickActionState(positive) == 1.0f || joystickDevice.getJoystickActionState(altPositive) == 1.0f)
 					axis = Positive;
-				else if(Input.GetKey(negative) || Input.GetKey(altNegative))
+				else if(joystickDevice.getJoystickActionState(negative) == 1.0f || joystickDevice.getJoystickActionState(altNegative) == 1.0f)
 					axis = Negative;
 			}
 			else if(type == InputType.MouseAxis || type == InputType.AnalogAxis)
 			{
-				if(_rawAxisName != null)
-					axis = Input.GetAxisRaw(_rawAxisName);
+				if (_rawAxisName != null)
+					axis = (float) joystickDevice.getJoystickActionState(_rawAxisName);
 			}
 			
 			return invert ? -axis : axis;
 		}
 		
-		public bool GetButton()
+		public bool GetButton(CustomJoystick joystickDevice)
 		{
-			if(type == InputType.Button)
-				return Input.GetKey(positive) || Input.GetKey(altPositive);
-			else if(type == InputType.RemoteButton)
-				return _remoteButtonState == ButtonState.Pressed || _remoteButtonState == ButtonState.JustPressed;
-			else if(type == InputType.AnalogButton)
-				return _analogButtonState == ButtonState.Pressed || _analogButtonState == ButtonState.JustPressed;
-			
-			return false;
-		}
-		
-		public bool GetButtonDown()
-		{
-			if(type == InputType.Button)
-				return Input.GetKeyDown(positive) || Input.GetKeyDown(altPositive);
-			else if(type == InputType.RemoteButton)
-				return _remoteButtonState == ButtonState.JustPressed;
-			else if(type == InputType.AnalogButton)
-				return _analogButtonState == ButtonState.JustPressed;
-			
-			return false;
-		}
-		
-		public bool GetButtonUp()
-		{
-			if(type == InputType.Button)
-				return Input.GetKeyUp(positive) || Input.GetKeyUp(altPositive);
-			else if(type == InputType.RemoteButton)
-				return _remoteButtonState == ButtonState.JustReleased;
-			else if(type == InputType.AnalogButton)
-				return _analogButtonState == ButtonState.JustReleased;
-			
+			if (type == InputType.Button)
+				return (joystickDevice.getJoystickActionState(positive) == 1.0) || (joystickDevice.getJoystickActionState(altPositive) == 1.0);
+
 			return false;
 		}
 
@@ -383,34 +232,6 @@ namespace TeamUtility.IO
 			}
 		}
 
-		/// <summary>
-		/// If the axis' input type is set to "RemoteButton" the axis state will be changed, else nothing will happen.
-		/// </summary>
-		public void SetRemoteButtonValue(bool down, bool justChanged)
-		{
-			if(type == InputType.RemoteButton)
-			{
-				if(down)
-				{
-					if(justChanged)
-						_remoteButtonState = ButtonState.JustPressed;
-					else
-						_remoteButtonState = ButtonState.Pressed;
-				}
-				else
-				{
-					if(justChanged)
-						_remoteButtonState = ButtonState.JustReleased;
-					else
-						_remoteButtonState = ButtonState.Released;
-				}
-			}
-			else
-			{
-				Debug.LogWarning(string.Format("You are trying to manually change the value of button \'{0}\' which is not of type \'RemoteButton\'", name));
-			}
-		}
-
 		public void Copy(AxisConfiguration source)
 		{
 			name = source.name;
@@ -432,8 +253,6 @@ namespace TeamUtility.IO
 		public void Reset()
 		{
 			_value = Neutral;
-			_remoteButtonState = ButtonState.Released;
-			_analogButtonState = ButtonState.Released;
 		}
 
 		private void UpdateRawAxisName()
@@ -447,7 +266,9 @@ namespace TeamUtility.IO
 					Debug.LogWarning(message);
 				}
 
-				_rawAxisName = string.Concat("mouse_axis_", Mathf.Clamp(axis, 0, MaxMouseAxes - 1));
+				if (axis == 0) {
+				}
+				_rawAxisName = string.Concat("Mouse_", Mathf.Clamp(axis, 0, MaxMouseAxes - 1));
 			}
 			else if(type == InputType.AnalogAxis || type == InputType.AnalogButton)
 			{
@@ -464,25 +285,11 @@ namespace TeamUtility.IO
 					Debug.LogWarning(message);
 				}
 
-				_rawAxisName = string.Concat("joy_", Mathf.Clamp(joystick, 0, MaxJoysticks - 1), 
-				                     "_axis_", Mathf.Clamp(axis, 0, MaxJoystickAxes - 1));
+				_rawAxisName = string.Concat("Axis_", Mathf.Clamp(axis, 0, MaxJoystickAxes - 1));
 			}
 			else
 			{
 				_rawAxisName = string.Empty;
-			}
-		}
-		
-		public static KeyCode StringToKey(string value)
-		{
-			if(string.IsNullOrEmpty(value)) {
-				return KeyCode.None;
-			}
-			try {
-				return (KeyCode)Enum.Parse(typeof(KeyCode), value, true);
-			}
-			catch {
-				return KeyCode.None;
 			}
 		}
 		

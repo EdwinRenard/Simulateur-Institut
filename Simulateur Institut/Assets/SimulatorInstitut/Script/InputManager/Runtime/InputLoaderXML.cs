@@ -20,13 +20,14 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using System;
 using System.IO;
 using System.Xml;
 using System.Collections.Generic;
 
-namespace TeamUtility.IO
+namespace SimulatorInstitut
 {
 	public sealed class InputLoaderXML : IInputLoader
 	{
@@ -160,16 +161,16 @@ namespace TeamUtility.IO
 					axisConfig.description = reader.IsEmptyElement ? string.Empty : reader.ReadElementContentAsString();
 					break;
 				case "positive":
-					axisConfig.positive = AxisConfiguration.StringToKey(reader.ReadElementContentAsString());
+					axisConfig.positive = reader.ReadElementContentAsString ();
 					break;
 				case "altPositive":
-					axisConfig.altPositive = AxisConfiguration.StringToKey(reader.ReadElementContentAsString());
+					axisConfig.altPositive = reader.ReadElementContentAsString ();
 					break;
 				case "negative":
-					axisConfig.negative = AxisConfiguration.StringToKey(reader.ReadElementContentAsString());
+					axisConfig.negative = reader.ReadElementContentAsString ();
 					break;
 				case "altNegative":
-					axisConfig.altNegative = AxisConfiguration.StringToKey(reader.ReadElementContentAsString());
+					axisConfig.altNegative = reader.ReadElementContentAsString ();
 					break;
 				case "deadZone":
 					axisConfig.deadZone = reader.ReadElementContentAsFloat();

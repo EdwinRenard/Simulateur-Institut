@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TeamUtility.IO;
+using SimulatorInstitut;
 
 public class CarBehaviorSimulator : MonoBehaviour {
 	//Variables engine.
@@ -24,16 +24,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 	public float finalDriveRatio;			//Final vehicle ratio.
 	public int currentGear;					//Current speed of the gearbox.
 		
-	void Start () {
-		if (TeamUtility.IO.InputManager.GetJoystickNames().Length > 0) {
-			TeamUtility.IO.InputManager.SetInputConfiguration ("Logitech_Simulator", PlayerID.One);
-			for (int i = 0; i < TeamUtility.IO.InputManager.GetJoystickNames ().Length; i++) {
-				Debug.Log ("Joystick : +" + TeamUtility.IO.InputManager.GetJoystickNames()[i]);
-			}
-		} else {
-			TeamUtility.IO.InputManager.SetInputConfiguration("Keyboard&Mouse", PlayerID.One);
-		}
-			
+	void Start () {			
 		start = true;
 		engineRPM = 0.0f;
 		maxEngineRPM = 5500.0f;
@@ -50,21 +41,21 @@ public class CarBehaviorSimulator : MonoBehaviour {
 		frontLeftWheel.ConfigureVehicleSubsteps(20,48,60);
 		frontRightWheel.ConfigureVehicleSubsteps(20,48,60);
 
-		Debug.Log("InputConfiguration : "+ TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name);
+		Debug.Log("InputConfiguration : "+ SimulatorInstitut.InputManager.GetInputConfiguration(PlayerID.One).name);
 	}
 		
 	void Update(){
 		speed = Mathf.Floor (this.GetComponent<Rigidbody> ().velocity.magnitude * 3.6f);
 
-		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator") {
-			if (TeamUtility.IO.InputManager.GetButton ("Start")) {
+		if (SimulatorInstitut.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator") {
+			if (SimulatorInstitut.InputManager.GetButton ("Start")) {
 				start = true;
 			}
-			if (TeamUtility.IO.InputManager.GetButton ("Stop")) {
+			if (SimulatorInstitut.InputManager.GetButton ("Stop")) {
 				start = false;
 			}
 		}else {
-			if (TeamUtility.IO.InputManager.GetButtonDown("Start")) {
+			if (SimulatorInstitut.InputManager.GetButtonDown("Start")) {
 				start = !start;
 			}
 		}
@@ -82,13 +73,13 @@ public class CarBehaviorSimulator : MonoBehaviour {
 			}
 
 			//Moving the car.
-			float totalMotorTorque = torqueCurve.Evaluate (engineRPM) * ratioGear.Evaluate (currentGear) * Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw("Accelerator"));
+			float totalMotorTorque = torqueCurve.Evaluate (engineRPM) * ratioGear.Evaluate (currentGear) * Mathf.Clamp01(SimulatorInstitut.InputManager.GetAxisRaw("Accelerator"));
 			rearLeftWheel.motorTorque = totalMotorTorque / 2.0f;
 			rearRightWheel.motorTorque = totalMotorTorque / 2.0f;
 
 			//Brake management.
-			if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw("Brakes")) > 0) {
-				rearLeftWheel.brakeTorque = brakeTorque * TeamUtility.IO.InputManager.GetAxisRaw("Brakes");
+			if (Mathf.Clamp01(SimulatorInstitut.InputManager.GetAxisRaw("Brakes")) > 0) {
+				rearLeftWheel.brakeTorque = brakeTorque * SimulatorInstitut.InputManager.GetAxisRaw("Brakes");
 				rearRightWheel.brakeTorque = brakeTorque;
 			} else {
 				rearLeftWheel.brakeTorque = 0;
@@ -99,7 +90,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 		}
 
 		//Orientation of front wheels.
-		float angleRotation = maxStreeringAngle * TeamUtility.IO.InputManager.GetAxisRaw("Horizontal");
+		float angleRotation = maxStreeringAngle * SimulatorInstitut.InputManager.GetAxisRaw("Horizontal");
 		frontLeftWheel.steerAngle = angleRotation;
 		frontRightWheel.steerAngle = angleRotation;
 		//Physical orientation of the wheels.
@@ -111,36 +102,36 @@ public class CarBehaviorSimulator : MonoBehaviour {
 
 	//Function for gears management.
 	public void ShiftGear(){
-		if (TeamUtility.IO.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator"){
+		if (SimulatorInstitut.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator"){
 			if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw ("Clutch")) > 0) {
 				currentGear = 1;
-				if (TeamUtility.IO.InputManager.GetButton ("Button8")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button8")) {
 					currentGear = 2;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button9")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button9")) {
 					currentGear = 3;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button10")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button10")) {
 					currentGear = 4;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button11")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button11")) {
 					currentGear = 5;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button12")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button12")) {
 					currentGear = 6;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button13")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button13")) {
 					currentGear = 6;
 				}
-				if (TeamUtility.IO.InputManager.GetButton ("Button14")) {
+				if (SimulatorInstitut.InputManager.GetButton ("Button14")) {
 					currentGear = 0;
 				}
 			}
 		} else {
-			if (TeamUtility.IO.InputManager.GetButtonDown("GearUp")) {
+			if (SimulatorInstitut.InputManager.GetButtonDown("GearUp")) {
 				currentGear++;
 			}
-			if (TeamUtility.IO.InputManager.GetButtonDown("GearDown")) {
+			if (SimulatorInstitut.InputManager.GetButtonDown("GearDown")) {
 				currentGear--;
 			}
 		}

@@ -20,24 +20,24 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using TeamUtility.IO;
-using TeamUtilityEditor.IO.InputManager;
-using _InputManager = TeamUtility.IO.InputManager;
+using SimulatorInstitut;
+using _InputManager = SimulatorInstitut.InputManager;
 
-namespace TeamUtilityEditor.IO
+namespace SimulatorInstitut
 {
 	public sealed class AdvancedInputEditor : EditorWindow
 	{
 		#region [Menu Options]
 		public enum FileMenuOptions
 		{
-			OverriteInputSettings = 0, CreateSnapshot, LoadSnapshot, Export, Import, ImportJoystickMapping, ConfigureForInputAdapter, CreateDefaultInputConfig
+			CreateSnapshot = 0, LoadSnapshot, Export, Import, ImportJoystickMapping, ConfigureForInputAdapter, CreateDefaultInputConfig
 		}
 
 		public enum EditMenuOptions
@@ -94,6 +94,7 @@ namespace TeamUtilityEditor.IO
 		private bool _tryedToFindInputManagerInScene = false;
 		private bool _isDisposed = false;
 		private string[] _axisOptions;
+		private string[] _mouseAxisOptions;
 		private string[] _joystickOptions;
 		
 		private const float _menuWidth = 100.0f;
@@ -104,8 +105,9 @@ namespace TeamUtilityEditor.IO
 		{
 			_joystickOptions = EditorToolbox.GenerateJoystickNames();
 			_axisOptions = EditorToolbox.GenerateJoystickAxisNames();
+			_mouseAxisOptions = EditorToolbox.GenerateMouseAxisNames ();
 
-			EditorToolbox.ShowStartupWarning();
+
 			IsOpen = true;
 
 			_tryedToFindInputManagerInScene = false;
@@ -273,7 +275,6 @@ namespace TeamUtilityEditor.IO
 		private void CreateFileMenu(Rect position)
 		{
 			GenericMenu fileMenu = new GenericMenu();
-			fileMenu.AddItem(new GUIContent("Overwrite Input Settings"), false, HandleFileMenuOption, FileMenuOptions.OverriteInputSettings);
 			fileMenu.AddItem(new GUIContent("Default Input Configuration"), false, HandleFileMenuOption, FileMenuOptions.CreateDefaultInputConfig);
 			if(EditorToolbox.HasInputAdapterAddon())
 				fileMenu.AddItem(new GUIContent("Configure For Input Adapter"), false, HandleFileMenuOption, FileMenuOptions.ConfigureForInputAdapter);
@@ -307,9 +308,6 @@ namespace TeamUtilityEditor.IO
 			FileMenuOptions option = (FileMenuOptions)arg;
 			switch(option)
 			{
-			case FileMenuOptions.OverriteInputSettings:
-				EditorToolbox.OverwriteInputSettings();
-				break;
 			case FileMenuOptions.CreateSnapshot:
 				EditorToolbox.CreateSnapshot(_inputManager);
 				break;
@@ -908,12 +906,6 @@ namespace TeamUtilityEditor.IO
                 _inputManager.playerFourDefault = inputConfig.name;
             }
 
-            //GUI.enabled = (EditorApplication.isPlaying && _InputManager.PlayerOneConfiguration.name != inputConfig.name);
-            //if(GUILayout.Button("Switch To", GUILayout.Width(135.0f), GUILayout.Height(20.0f)))
-            //{
-            //	_InputManager.SetInputConfiguration(inputConfig.name, PlayerID.One);
-            //}
-
             GUI.enabled = true;
 			
 			EditorGUILayout.EndScrollView();
@@ -933,21 +925,13 @@ namespace TeamUtilityEditor.IO
 			axisConfig.description = EditorGUILayout.TextField("Description", axisConfig.description);
 			
 			//	Positive Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingPositiveKey, "Positive", 
-									   "editor_positive_key", axisConfig.positive);
-			ProcessKeyString(ref axisConfig.positive, ref _editingPositiveKey);
+			axisConfig.positive=EditorGUILayout.TextField("Positive", axisConfig.positive);
 			//	Negative Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingNegativeKey, "Negative", 
-									   "editor_negative_key", axisConfig.negative);
-			ProcessKeyString(ref axisConfig.negative, ref _editingNegativeKey);
+			axisConfig.negative=EditorGUILayout.TextField("Negative", axisConfig.negative);
 			//	Alt Positive Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingAltPositiveKey, "Alt Positive", 
-									   "editor_alt_positive_key", axisConfig.altPositive);
-			ProcessKeyString(ref axisConfig.altPositive, ref _editingAltPositiveKey);
+			axisConfig.altPositive=EditorGUILayout.TextField("Alt Positive", axisConfig.altPositive);
 			//	Alt Negative key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingAltNegativeKey, "Alt Negative", 
-									   "editor_alt_negative_key", axisConfig.altNegative);
-			ProcessKeyString(ref axisConfig.altNegative, ref _editingAltNegativeKey);
+			axisConfig.altNegative=EditorGUILayout.TextField("Alt Negative", axisConfig.altNegative);
 			
 			axisConfig.gravity = EditorGUILayout.FloatField(gravityInfo, axisConfig.gravity);
 			axisConfig.deadZone = EditorGUILayout.FloatField(deadZoneInfo, axisConfig.deadZone);
@@ -955,50 +939,18 @@ namespace TeamUtilityEditor.IO
 			axisConfig.snap = EditorGUILayout.Toggle(snapInfo, axisConfig.snap);
 			axisConfig.invert = EditorGUILayout.Toggle("Invert", axisConfig.invert);
 			axisConfig.type = (InputType)EditorGUILayout.EnumPopup("Type", axisConfig.type);
-			axisConfig.axis = EditorGUILayout.Popup("Axis", axisConfig.axis, _axisOptions);
+			if (axisConfig.type == InputType.MouseAxis) {
+				axisConfig.axis = EditorGUILayout.Popup ("Axis", axisConfig.axis, _mouseAxisOptions);
+			} else {
+				axisConfig.axis = EditorGUILayout.Popup("Axis", axisConfig.axis, _axisOptions);
+			}
+
 			axisConfig.joystick = EditorGUILayout.Popup("Joystick", axisConfig.joystick, _joystickOptions);
 
 			EditorGUILayout.Space();
 
-			if(axisConfig.type == InputType.Button && (Event.current == null || Event.current.type != EventType.KeyUp))
-			{
-				if(IsGenericJoystickButton(axisConfig.positive))
-					DisplayGenericJoystickButtonWarning(axisConfig.positive, axisConfig.joystick);
-
-				if(IsGenericJoystickButton(axisConfig.altPositive))
-					DisplayGenericJoystickButtonWarning(axisConfig.altPositive, axisConfig.joystick);
-
-				if(IsGenericJoystickButton(axisConfig.negative))
-					DisplayGenericJoystickButtonWarning(axisConfig.negative, axisConfig.joystick);
-
-				if(IsGenericJoystickButton(axisConfig.altNegative))
-					DisplayGenericJoystickButtonWarning(axisConfig.altNegative, axisConfig.joystick);
-			}
-
 			GUILayout.EndScrollView();
 			GUILayout.EndArea();
-		}
-		
-		private void ProcessKeyString(ref KeyCode key, ref bool isEditing)
-		{
-			if(isEditing && Event.current.type == EventType.KeyUp)
-			{
-				key = AxisConfiguration.StringToKey(_keyString);
-				if(key == KeyCode.None)
-				{
-					_keyString = string.Empty;
-				}
-				else
-				{
-					_keyString = key.ToString();
-				}
-				isEditing = false;
-			}
-		}
-
-		private bool IsGenericJoystickButton(KeyCode keyCode)
-		{
-			return (int)keyCode >= (int)KeyCode.JoystickButton0 && (int)keyCode <= (int)KeyCode.JoystickButton19;
 		}
 
 		private void DisplayGenericJoystickButtonWarning(KeyCode button, int joystick)

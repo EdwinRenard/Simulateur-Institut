@@ -20,11 +20,12 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using System;
 using System.Collections;
 
-namespace TeamUtility.IO
+namespace SimulatorInstitut
 {
 	public partial class InputManager : MonoBehaviour
 	{
@@ -80,7 +81,7 @@ namespace TeamUtility.IO
 			AxisConfiguration axisConfig = GetAxisConfiguration(playerID, name);
 			if(axisConfig != null)
 			{
-				return axisConfig.GetAxis();
+				return axisConfig.GetAxis(joystickDevicePlayerOne);
 			}
 			else
 			{
@@ -94,11 +95,11 @@ namespace TeamUtility.IO
 			AxisConfiguration axisConfig = GetAxisConfiguration(playerID, name);
 			if(axisConfig != null)
 			{
-				return axisConfig.GetAxisRaw();
+				return axisConfig.GetAxisRaw(joystickDevicePlayerOne);
 			}
 			else
 			{
-                Debug.LogError(string.Format("An axis named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
+				Debug.LogWarning(string.Format("An axis named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
                 return 0.0f;
 			}
 		}
@@ -108,40 +109,12 @@ namespace TeamUtility.IO
 			AxisConfiguration axisConfig = GetAxisConfiguration(playerID, name);
 			if(axisConfig != null)
 			{
-				return axisConfig.GetButton();
+				return axisConfig.GetButton(joystickDevicePlayerOne);
 			}
 			else
 			{
-				Debug.LogError(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
+				Debug.LogWarning(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
 				return false;
-			}
-		}
-		
-		public static bool GetButtonDown(string name, PlayerID playerID = PlayerID.One)
-		{
-			AxisConfiguration axisConfig = GetAxisConfiguration(playerID, name);
-			if(axisConfig != null)
-			{
-				return axisConfig.GetButtonDown();
-			}
-			else
-			{
-                Debug.LogError(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
-                return false;
-			}
-		}
-		
-		public static bool GetButtonUp(string name, PlayerID playerID = PlayerID.One)
-		{
-			AxisConfiguration axisConfig = GetAxisConfiguration(playerID, name);
-			if(axisConfig != null)
-			{
-				return axisConfig.GetButtonUp();
-			}
-			else
-			{
-                Debug.LogError(string.Format("An button named \'{0}\' does not exist in the active input configuration for player {1}", name, playerID));
-                return false;
 			}
 		}
 		

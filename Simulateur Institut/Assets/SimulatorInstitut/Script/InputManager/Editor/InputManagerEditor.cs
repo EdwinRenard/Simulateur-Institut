@@ -20,15 +20,15 @@
 //	FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 //	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
+//	Modified by Edwin RENARD.
 using UnityEngine;
 using UnityEditor;
 using System;
 using System.Collections;
-using TeamUtility.IO;
-using TeamUtilityEditor.IO.InputManager;
-using _InputManager = TeamUtility.IO.InputManager;
+using SimulatorInstitut;
+using _InputManager = SimulatorInstitut.InputManager;
 
-namespace TeamUtilityEditor.IO
+namespace SimulatorInstitut
 {
 	[CustomEditor(typeof(_InputManager))]
 	public sealed class InputManagerEditor : UnityEditor.Editor 
@@ -46,6 +46,7 @@ namespace TeamUtilityEditor.IO
 		private GUIContent _deadZoneInfo = new GUIContent("Dead Zone", "Size of analog dead zone. Values within this range map to neutral.");
 		private GUIContent _createSnapshotIngo = new GUIContent("Create\nSnapshot", "Creates a snapshot of your input configurations which can be restored at a later time(when you exit play-mode for example)");
 		private string[] _axisOptions = new string[] { "X", "Y", "3rd(Scrollwheel)", "4th", "5th", "6th", "7th", "8th", "9th", "10th" };
+		private string[] _mouseAxisOptions = new string[] { "Mouse 1", "Mouse 2", };
 		private string[] _joystickOptions;
 		private string _keyString;
 		private bool _editingPositiveKey = false;
@@ -57,8 +58,8 @@ namespace TeamUtilityEditor.IO
 		{
 			_joystickOptions = EditorToolbox.GenerateJoystickNames();
 			_axisOptions = EditorToolbox.GenerateJoystickAxisNames();
+			_mouseAxisOptions = EditorToolbox.GenerateMouseAxisNames();
 
-			EditorToolbox.ShowStartupWarning();
 			_intputConfigurations = serializedObject.FindProperty("inputConfigurations");
 			_dontDestroyOnLoad = serializedObject.FindProperty("dontDestroyOnLoad");
 			_ignoreTimescale = serializedObject.FindProperty("ignoreTimescale");
@@ -179,55 +180,26 @@ namespace TeamUtilityEditor.IO
 			EditorGUILayout.PropertyField(name);
 			EditorGUILayout.PropertyField(description);
 			//	Positive Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingPositiveKey, "Positive", 
-									   "inspector_positive_key", PropertyToKeyCode(positive));
-			ProcessKeyString(ref _editingPositiveKey, positive);
+			EditorGUILayout.PropertyField(positive);
 			//	Negative Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingNegativeKey, "Negative", 
-									   "inspector_negative_key", PropertyToKeyCode(negative));
-			ProcessKeyString(ref _editingNegativeKey, negative);
+			EditorGUILayout.PropertyField(negative);
 			//	Alt Positive Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingAltPositiveKey, "Alt Positive", 
-									   "inspector_alt_positive_key", PropertyToKeyCode(altPositive));
-			ProcessKeyString(ref _editingAltPositiveKey, altPositive);
+			EditorGUILayout.PropertyField(altPositive);
 			//	Alt Negative Key
-			EditorToolbox.KeyCodeField(ref _keyString, ref _editingAltNegativeKey, "Alt Negative", 
-									   "inspector_alt_negative_key", PropertyToKeyCode(altNegative));
-			ProcessKeyString(ref _editingAltNegativeKey, altNegative);
-			
+			EditorGUILayout.PropertyField(altNegative);
 			EditorGUILayout.PropertyField(gravity, _gravityInfo);
 			EditorGUILayout.PropertyField(deadZone, _deadZoneInfo);
 			EditorGUILayout.PropertyField(sensitivity, _sensitivityInfo);
 			EditorGUILayout.PropertyField(snap, _snapInfo);
 			EditorGUILayout.PropertyField(invert);
 			EditorGUILayout.PropertyField(type);
-			axis.intValue = EditorGUILayout.Popup("Axis", axis.intValue, _axisOptions);
+			if (EditorGUILayout.PropertyField (type).ToString () == "MouseAxis") {
+				axis.intValue = EditorGUILayout.Popup ("Axis", axis.intValue, _mouseAxisOptions);
+			} else {
+				axis.intValue = EditorGUILayout.Popup ("Axis", axis.intValue, _axisOptions);
+			}
 			joystick.intValue = EditorGUILayout.Popup("Joystick", joystick.intValue, _joystickOptions);
 			EditorGUI.indentLevel--;
-		}
-		
-		private KeyCode PropertyToKeyCode(SerializedProperty key)
-		{
-			return AxisConfiguration.StringToKey(key.enumNames[key.enumValueIndex]);
-		}
-		
-		private void ProcessKeyString(ref bool isEditing, SerializedProperty key)
-		{
-			if(isEditing && Event.current.type == EventType.KeyUp)
-			{
-				KeyCode keyCode = AxisConfiguration.StringToKey(_keyString);
-				if(keyCode == KeyCode.None)
-				{
-					key.enumValueIndex = 0;
-					_keyString = string.Empty;
-				}
-				else
-				{
-					key.enumValueIndex = IndexOfKeyName(key.enumNames, _keyString);
-					_keyString = keyCode.ToString();
-				}
-				isEditing = false;
-			}
 		}
 		
 		private int IndexOfKeyName(string[] array, string name)
