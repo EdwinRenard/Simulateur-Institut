@@ -20,10 +20,10 @@ public class DboxInterface : MonoBehaviour {
 	float rpm;		//The motor's rate.
 	float torque;	//The motor's power.
 	float heave;	//Current move Up/Down
-	float pitch;	//Current move Top/Rear
+	float pitch;	//Current move Front/Back
 	float roll;		//Current move Left/Right
 	float t_pitch;	//The final move Up/Down
-	float t_roll;	//The final move Top/Rear
+	float t_roll;	//The final move Front/Back
 	float t_heave;	//The final move Left/Right
 
 	public DboxInterface(){
@@ -39,7 +39,7 @@ public class DboxInterface : MonoBehaviour {
 
 		//Initialize the Dbox platform.
 		int res = InitDBoxPlatform ();
-		Debug.Log ("Init : " + res);	//If return 0, so it's good.
+		Debug.Log ("Init : " + res);	//If res = 0, it's good.
 	}
 		
 	~DboxInterface(){
@@ -47,7 +47,7 @@ public class DboxInterface : MonoBehaviour {
 	}
 
 	public void Update(){
-				//For a lisse move.
+				//For a smooth move.
 		heave = (float)Math.Round (Mathf.Lerp (heave, t_heave, pas), 3);
 		roll = (float)Math.Round (Mathf.Lerp (roll, t_roll, pas), 3);
 		pitch = (float)Math.Round (Mathf.Lerp (pitch, t_pitch, pas), 3);
