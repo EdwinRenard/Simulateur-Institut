@@ -11,16 +11,16 @@ public class DynamiquePlatformJoystick : CustomJoystick
 	[DllImport("user32")]
 	private static extern int GetForegroundWindow ();
 
-	[DllImport("InputDynamiqueLibrary")]
+	[DllImport("DynamiquePlatformLibrary")]
 	public static extern int InitDynamiqueJoystick(int hwnd);
 
-	[DllImport("InputDynamiqueLibrary")]
+	[DllImport("DynamiquePlatformLibrary")]
 	public static extern void UpdateState();
 
-	[DllImport("InputDynamiqueLibrary", CallingConvention=CallingConvention.Cdecl)]
+	[DllImport("DynamiquePlatformLibrary", CallingConvention=CallingConvention.Cdecl)]
 	public static extern double getActionState(string action);
 
-	[DllImport("InputDynamiqueLibrary")]
+	[DllImport("DynamiquePlatformLibrary")]
 	public static extern void StopDynamiqueJoystick();
 
 	public DynamiquePlatformJoystick()

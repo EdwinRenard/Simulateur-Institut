@@ -1,0 +1,20 @@
+﻿Build started 18/07/2017 10:36:42.
+     1>Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\ForceFeedbackLibrary\ForceFeedbackLibrary.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D ForceFeedbackLibrary_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt ForceFeedbackLibrary.cpp
+         ForceFeedbackLibrary.cpp
+     1>ForceFeedbackLibrary.cpp(381): warning C4244: '=' : conversion from 'FLOAT' to 'DWORD', possible loss of data
+     1>ForceFeedbackLibrary.cpp(411): warning C4244: '=' : conversion from 'FLOAT' to 'DWORD', possible loss of data
+     1>ForceFeedbackLibrary.cpp(446): warning C4244: '=' : conversion from 'FLOAT' to 'DWORD', possible loss of data
+     1>ForceFeedbackLibrary.cpp(451): warning C4244: '=' : conversion from 'FLOAT' to 'DWORD', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64" /LIBPATH:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86" dinput8.lib dxguid.lib comctl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.lib" /MACHINE:X64 /DLL x64\Release\ForceFeedbackLibrary.obj
+            Creating library C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.lib and object C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.exp
+         Generating code
+         Finished generating code
+         ForceFeedbackLibrary.vcxproj -> C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\x64\Release\ForceFeedbackLibrary.dll
+     1>Done Building Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\ForceFeedbackLibrary\ForceFeedbackLibrary\ForceFeedbackLibrary.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.18

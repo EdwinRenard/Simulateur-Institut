@@ -55,7 +55,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 				start = false;
 			}
 		}else {
-			if (SimulatorInstitut.InputManager.GetButtonDown("Start")) {
+			if (SimulatorInstitut.InputManager.GetButton("Start")) {
 				start = !start;
 			}
 		}
@@ -103,7 +103,7 @@ public class CarBehaviorSimulator : MonoBehaviour {
 	//Function for gears management.
 	public void ShiftGear(){
 		if (SimulatorInstitut.InputManager.GetInputConfiguration(PlayerID.One).name == "Logitech_Simulator"){
-			if (Mathf.Clamp01(TeamUtility.IO.InputManager.GetAxisRaw ("Clutch")) > 0) {
+			if (Mathf.Clamp01(SimulatorInstitut.InputManager.GetAxisRaw ("Clutch")) > 0) {
 				currentGear = 1;
 				if (SimulatorInstitut.InputManager.GetButton ("Button8")) {
 					currentGear = 2;
@@ -128,10 +128,10 @@ public class CarBehaviorSimulator : MonoBehaviour {
 				}
 			}
 		} else {
-			if (SimulatorInstitut.InputManager.GetButtonDown("GearUp")) {
+			if (SimulatorInstitut.InputManager.GetButton("GearUp")) {
 				currentGear++;
 			}
-			if (SimulatorInstitut.InputManager.GetButtonDown("GearDown")) {
+			if (SimulatorInstitut.InputManager.GetButton("GearDown")) {
 				currentGear--;
 			}
 		}

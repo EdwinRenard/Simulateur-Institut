@@ -20,11 +20,11 @@ namespace UnityStandardAssets.Vehicles.Car
         private void FixedUpdate()
         {
             // pass the input to the car!
-            float h = TeamUtility.IO.InputManager.GetAxis("Horizontal");
-            float v = TeamUtility.IO.InputManager.GetAxis("Accelerator");
+			float h = SimulatorInstitut.InputManager.GetAxis("Horizontal");
+			float v = SimulatorInstitut.InputManager.GetAxis("Accelerator");
 		    v = (v+1)/2;
 #if !MOBILE_INPUT
-            float handbrake = TeamUtility.IO.InputManager.GetAxis("Brakes");
+			float handbrake = SimulatorInstitut.InputManager.GetAxis("Brakes");
             m_Car.Move(h, -v, -v, handbrake);
 #else
             m_Car.Move(h, v, v, 0f);

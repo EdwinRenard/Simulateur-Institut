@@ -1,0 +1,22 @@
+﻿Build started 18/07/2017 10:24:55.
+     1>Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\LogitechLibrary\LogitechLibrary.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"x64\Release\LogitechLibrary.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt LogitechLibrary.cpp
+         LogitechLibrary.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.dll" /INCREMENTAL:NO /NOLOGO dinput8.lib dxguid.lib comctl32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         x64\Release\LogitechLibrary.obj
+         x64\Release\stdafx.obj
+            Creating library C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.lib and object C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.exp
+         Generating code
+         Finished generating code
+         LogitechLibrary.vcxproj -> C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\x64\Release\LogitechLibrary.dll
+     1>Done Building Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\LogitechLibrary\LogitechLibrary.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.46

@@ -1,0 +1,25 @@
+﻿Build started 18/07/2017 10:24:29.
+     1>Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\LogitechLibrary\LogitechLibrary.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\LogitechLibrary.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D LogitechLibrary_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\LogitechLibrary.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt LogitechLibrary.cpp
+         LogitechLibrary.cpp
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(9): warning C4627: '#include <dinput.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(10): warning C4627: '#include <math.h>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(11): warning C4627: '#include <iostream>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(12): warning C4627: '#include <vector>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(13): warning C4627: '#include <string>': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\renard.ensam\documents\github\simulateur-institut\source dll\logitechlibrary\logitechlibrary\logitechlibrary.cpp(351): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+     1>Done Building Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\LogitechLibrary\LogitechLibrary\LogitechLibrary.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.19

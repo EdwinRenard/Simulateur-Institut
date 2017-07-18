@@ -11,13 +11,13 @@ public class LogitechJoystick : CustomJoystick
 	[DllImport("user32")]
 	private static extern int GetForegroundWindow ();
 
-	[DllImport("LogitechSimulatorLibrary")]
+	[DllImport("LogitechLibrary")]
 	public static extern int InitDynamiqueJoystick(int hwnd);
 
-	[DllImport("LogitechSimulatorLibrary", CallingConvention=CallingConvention.Cdecl)]
+	[DllImport("LogitechLibrary", CallingConvention=CallingConvention.Cdecl)]
 	public static extern double getActionState(string action);
 
-	[DllImport("LogitechSimulatorLibrary")]
+	[DllImport("LogitechLibrary")]
 	public static extern void StopDynamiqueJoystick();
 
 	public LogitechJoystick()

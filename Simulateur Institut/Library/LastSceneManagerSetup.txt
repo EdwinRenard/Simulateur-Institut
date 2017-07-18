@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/SimulatorInstitut/Scene/circuit.unity
+  isLoaded: 1
+  isActive: 1
