@@ -1,72 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Input playerOneDefault="" playerTwoDefault="" playerThreeDefault="" playerFourDefault="">
+<Input playerOneDefault="Logitech_Simulator" playerTwoDefault="" playerThreeDefault="" playerFourDefault="">
   <InputConfiguration name="Logitech_Simulator">
-    <AxisConfiguration name="Accelerator">
-      <description>pédale d'accélération du logitech</description>
-      <positive>Z</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Axis_0">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>0</gravity>
       <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>true</invert>
+      <type>AnalogAxis</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Axis_1">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>0</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>AnalogAxis</type>
+      <axis>1</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Axis_2">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>0</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
       <type>AnalogAxis</type>
       <axis>2</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Brakes">
-      <description>pédale de frein du logitech</description>
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>S</negative>
-      <altNegative>None</altNegative>
-      <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>1</sensitivity>
-      <snap>false</snap>
-      <invert>true</invert>
-      <type>AnalogAxis</type>
-      <axis>3</axis>
-      <joystick>0</joystick>
-    </AxisConfiguration>
-    <AxisConfiguration name="Clutch">
-      <description>Pédale d'embrayage du logitech</description>
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
-      <deadZone>0</deadZone>
-      <gravity>0</gravity>
-      <sensitivity>1</sensitivity>
-      <snap>false</snap>
-      <invert>true</invert>
-      <type>AnalogAxis</type>
-      <axis>4</axis>
-      <joystick>0</joystick>
-    </AxisConfiguration>
-    <AxisConfiguration name="Horizontal">
-      <description>Volant du logitech</description>
-      <positive>D</positive>
-      <altPositive>None</altPositive>
-      <negative>Q</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Axis_3">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0.05</deadZone>
       <gravity>0</gravity>
       <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>AnalogAxis</type>
-      <axis>0</axis>
+      <axis>3</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button0">
-      <description>Bouton 0 du gear logitech</description>
-      <positive>Joystick1Button0</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button0</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -76,12 +76,12 @@
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Start">
-      <description>Bouton 1 du gear logitech</description>
-      <positive>Joystick1Button1</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Button1">
+      <description />
+      <positive>Button1</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -91,12 +91,12 @@
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Stop">
-      <description>Bouton 2 du gear logitech</description>
-      <positive>Joystick1Button2</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Button2">
+      <description />
+      <positive>Button2</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -107,11 +107,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button3">
-      <description>Bouton 3 du gear logitech</description>
-      <positive>Joystick1Button3</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button3</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -122,11 +122,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button4">
-      <description>Bouton 4 du volant logitech</description>
-      <positive>Joystick1Button4</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button4</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -137,11 +137,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button5">
-      <description>Bouton 5 du volant logitech</description>
-      <positive>Joystick1Button5</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button5</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -152,11 +152,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button6">
-      <description>Bouton 6 du volant logitech</description>
-      <positive>Joystick1Button6</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button6</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -167,11 +167,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button7">
-      <description>Bouton 7 du volant logitech</description>
-      <positive>Joystick1Button7</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button7</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -182,11 +182,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button8">
-      <description>Bouton 8 du gear logitech (levier de vitesse (1er))</description>
-      <positive>Joystick1Button8</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button8</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -197,11 +197,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button9">
-      <description>Bouton 9 du gear logitech (levier de vitesse (2e))</description>
-      <positive>Joystick1Button9</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button9</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -212,11 +212,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button10">
-      <description>Bouton 10 du gear logitech (levier de vitesse (3e))</description>
-      <positive>Joystick1Button10</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button10</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -227,11 +227,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button11">
-      <description>Bouton 11 du gear logitech (levier de vitesse (4e))</description>
-      <positive>Joystick1Button11</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button11</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -242,11 +242,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button12">
-      <description>Bouton 12 du gear logitech (levier de vitesse (5e))</description>
-      <positive>Joystick1Button12</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button12</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -257,11 +257,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button13">
-      <description>Bouton 13 du gear logitech (levier de vitesse (6e))</description>
-      <positive>Joystick1Button13</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button13</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -272,11 +272,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button14">
-      <description>Bouton 14 du gear logitech (levier de vitesse (R))</description>
-      <positive>Joystick1Button14</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button14</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -287,11 +287,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button15">
-      <description>Bouton 15 du gear logitech</description>
-      <positive>Joystick1Button15</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button15</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -302,11 +302,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button16">
-      <description>Bouton 16 du gear logitech</description>
-      <positive>Joystick1Button16</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button16</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -317,11 +317,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button17">
-      <description>Bouton 17 du gear logitech</description>
-      <positive>Joystick1Button17</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button17</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -332,11 +332,11 @@
       <joystick>0</joystick>
     </AxisConfiguration>
     <AxisConfiguration name="Button18">
-      <description>Bouton 18 du gear logitech</description>
-      <positive>Joystick1Button18</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <description />
+      <positive>Button18</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -346,27 +346,27 @@
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="D_Pad_Horizontal">
-      <description>Croix directionnelle du gear logitech (Horizontal)</description>
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Axis_4">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>AnalogAxis</type>
-      <axis>6</axis>
+      <axis>4</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="D_Pad_Vertical">
-      <description>Croix directionnelle du gear logitech (Vertical)</description>
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Axis_5">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
       <sensitivity>1</sensitivity>
@@ -377,91 +377,498 @@
       <joystick>0</joystick>
     </AxisConfiguration>
   </InputConfiguration>
-  <InputConfiguration name="Keyboard&amp;Mouse">
-    <AxisConfiguration name="Horizontal">
+  <InputConfiguration name="DynamiquePlatform_Simulator">
+    <AxisConfiguration name="Axis_0">
       <description />
-      <positive>D</positive>
-      <altPositive>RightArrow</altPositive>
-      <negative>Q</negative>
-      <altNegative>LeftArrow</altNegative>
-      <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
-      <snap>true</snap>
-      <invert>false</invert>
-      <type>DigitalAxis</type>
-      <axis>0</axis>
-      <joystick>0</joystick>
-    </AxisConfiguration>
-    <AxisConfiguration name="Accelerator">
-      <description />
-      <positive>Z</positive>
-      <altPositive>UpArrow</altPositive>
-      <negative>S</negative>
-      <altNegative>DownArrow</altNegative>
-      <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
-      <snap>true</snap>
-      <invert>false</invert>
-      <type>DigitalAxis</type>
-      <axis>0</axis>
-      <joystick>0</joystick>
-    </AxisConfiguration>
-    <AxisConfiguration name="MouseHorizontal">
-      <description />
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
-      <sensitivity>0.1</sensitivity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
-      <type>MouseAxis</type>
+      <type>AnalogAxis</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="MouseVertical">
+    <AxisConfiguration name="Axis_1">
       <description />
-      <positive>None</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
       <gravity>1</gravity>
-      <sensitivity>0.1</sensitivity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
-      <type>MouseAxis</type>
+      <type>AnalogAxis</type>
       <axis>1</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="GearUp">
-      <description>Monter d'une vitesse</description>
-      <positive>LeftShift</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Axis_2">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>AnalogAxis</type>
+      <axis>2</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Axis_3">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>AnalogAxis</type>
+      <axis>3</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button0">
+      <description />
+      <positive>Button0</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="GearDown">
-      <description>Descendre d'une vitesse</description>
-      <positive>LeftControl</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="Button1">
+      <description />
+      <positive>Button1</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button2">
+      <description />
+      <positive>Button2</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button3">
+      <description />
+      <positive>Button3</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button4">
+      <description />
+      <positive>Button4</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button5">
+      <description />
+      <positive>Button5</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button6">
+      <description />
+      <positive>Button6</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button7">
+      <description />
+      <positive>Button7</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button8">
+      <description />
+      <positive>LeftIndicator</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button9">
+      <description />
+      <positive>RightIndicator</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button10">
+      <description />
+      <positive>Sidelight</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button11">
+      <description />
+      <positive>CrossingLight</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button12">
+      <description />
+      <positive>RoadLight</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button13">
+      <description />
+      <positive>Call</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button14">
+      <description />
+      <positive>FrontFogLight</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button15">
+      <description />
+      <positive>RearFogLight</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button16">
+      <description />
+      <positive>Mist</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button17">
+      <description />
+      <positive>Int</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button18">
+      <description />
+      <positive>Low</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button19">
+      <description />
+      <positive>High</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button20">
+      <description />
+      <positive>On</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button21">
+      <description />
+      <positive>RearTop</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button22">
+      <description />
+      <positive>RearBottom</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button23">
+      <description />
+      <positive>Pull</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button24">
+      <description />
+      <positive>StartButton</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button25">
+      <description />
+      <positive>Klaxon</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button26">
+      <description />
+      <positive>RedButton</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Button27">
+      <description />
+      <positive>Ceinture</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+  </InputConfiguration>
+  <InputConfiguration name="Keyboard&amp;Mouse">
+    <AxisConfiguration name="Accelerator">
+      <description />
+      <positive>Z</positive>
+      <altPositive />
+      <negative>S</negative>
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
@@ -471,42 +878,492 @@
     <AxisConfiguration name="Brakes">
       <description />
       <positive>Space</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>1</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Clutch">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>2</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Wheel">
+      <description />
+      <positive>D</positive>
+      <altPositive />
+      <negative>Q</negative>
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>3</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBox1">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Start">
-      <description>Démarre le véhicule</description>
-      <positive>K</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="GearBox2">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>
       <axis>0</axis>
       <joystick>0</joystick>
     </AxisConfiguration>
-    <AxisConfiguration name="Stop">
-      <description>Stop le véhicule</description>
-      <positive>K</positive>
-      <altPositive>None</altPositive>
-      <negative>None</negative>
-      <altNegative>None</altNegative>
+    <AxisConfiguration name="GearBox3">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
       <deadZone>0</deadZone>
-      <gravity>3</gravity>
-      <sensitivity>3</sensitivity>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBox4">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBox5">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBox6">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBox7">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearBoxR">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="LeftIndicator">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RightIndicator">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Sidelight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="CrossingLight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RoadLight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="CallLight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="FrontFogLight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RearFogLight">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Mist">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Int">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Low">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="High">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="On">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RearTop">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RearBottom">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Pull">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="StartButton">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Klaxon">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="RedButton">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="Ceinture">
+      <description />
+      <positive />
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearUp">
+      <description />
+      <positive>Shift</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
+      <snap>false</snap>
+      <invert>false</invert>
+      <type>Button</type>
+      <axis>0</axis>
+      <joystick>0</joystick>
+    </AxisConfiguration>
+    <AxisConfiguration name="GearDown">
+      <description />
+      <positive>Ctrl</positive>
+      <altPositive />
+      <negative />
+      <altNegative />
+      <deadZone>0</deadZone>
+      <gravity>1</gravity>
+      <sensitivity>1</sensitivity>
       <snap>false</snap>
       <invert>false</invert>
       <type>Button</type>

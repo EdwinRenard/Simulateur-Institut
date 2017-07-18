@@ -1,0 +1,15 @@
+﻿Build started 18/07/2017 10:33:53.
+     1>Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\DynamiquePlatformLibrary\DynamiquePlatformLibrary.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\DynamiquePlatformLibrary\lib\x64" dinput8.lib dxguid.lib comctl32.lib winmm.lib NIDAQmx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         x64\Release\DynamiquePlatformLibrary.obj
+         x64\Release\stdafx.obj
+            Creating library C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.lib and object C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.exp
+         Generating code
+         Finished generating code
+         DynamiquePlatformLibrary.vcxproj -> C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\x64\Release\DynamiquePlatformLibrary.dll
+     1>Done Building Project "C:\Users\renard.ENSAM\Documents\GitHub\Simulateur-Institut\Source dll\DynamiquePlatformLibrary\DynamiquePlatformLibrary\DynamiquePlatformLibrary.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.39

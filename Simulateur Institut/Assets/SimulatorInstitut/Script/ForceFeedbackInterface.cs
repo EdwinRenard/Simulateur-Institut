@@ -6,27 +6,27 @@ public class ForceFeedbackInterface {
 
 	[DllImport("user32")]
 	private static extern int GetForegroundWindow();			//To access the windows affected by force feedback.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int InitDirectInput();					//Initialize the device.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int InitForceFeedback(int HWND);		//Initializes the force feedback of the device.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int SetDeviceForcesXY(int x, int y);	//Gives an action force on the X axis and / or the Y axis.
-	[DllImport("DirectInputLibrary")]							
+	[DllImport("ForceFeedbackLibrary")]							
 	public static extern int SetDelayForceXY(int xForce, int yForce, float delay); //Gives an action force on the X axis and/or the Y axis with a delay.
-	[DllImport("DirectInputLibrary")]							
+	[DllImport("ForceFeedbackLibrary")]							
 	public static extern int SetDurationForceXY(int xForce, int yForce, float duration); //Gives an action force on the X axis and/or the Y axis with a duration.
-	[DllImport("DirectInputLibrary")]							
+	[DllImport("ForceFeedbackLibrary")]							
 	public static extern int SetCustomForceXY(int xForce, int yForce, float duration, float delay); //Gives an custom action force on the X axis and/or the Y axis.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int StartEffect();						//Starts the initialized effect.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int StopEffect();						//Stops the current effect.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int DetectForceFeedbackDevice();		//Device detection compatible with force feedback.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int FreeForceFeedback();				//Releases the force feedback.
-	[DllImport("DirectInputLibrary")]
+	[DllImport("ForceFeedbackLibrary")]
 	public static extern int FreeDirectInput();					//Releases the device.
 
 	//Variables
